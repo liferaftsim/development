@@ -81,6 +81,9 @@ While in the raft player can click water to jump into the water and click items 
 ### Diving
 Not for this version.
 
+### Crafting
+
+
 Items
 -------------
 
@@ -90,5 +93,6 @@ Items
 | Water filter | Use, Disassemble (later) | Can filter ocean water into drinkable water (slow) or be used as parts (later) |
 | Duct tape | Use | Can be used to craft new items (later) |
 | Water bottle | Drink, Fill | Container for water |
-
+| Paddle | Use | Used for paddling |
+| Reflective blanket | Use | Can be used for shade during the day and keep warm (or less cold?) during the night |
 

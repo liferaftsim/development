@@ -24,8 +24,11 @@ The score is based on the current character stats.
 > **Example** 
 >
 Energy: 15
+>
 Comfort: -30
+>
 Hunger: +20 (positive is bad)
+>
 Total: -35
 
 Character stats
@@ -34,16 +37,16 @@ Statistics are not only used to calculate the score as shown in the "Score" chap
 
 Each stat ranges between -100 and 100.
 
-### List of stats
-| Stat | Feedback |
-| :--- | :-----|
-| Comfort | Score |
-| Energy | Score, Character speed |
-| Hunger | Score, Death, Growling |
-| Sunburn | Score, Skin color |
-| Temperature | Score, Death |
-| Time in the sun | Sunburn, Temperature |
-| Water | Score, Death |
+### Table of stats
+| Stat | Feedback | Aim |
+| :--- | :-----| :----: |
+| Comfort | Score | Positive |
+| Energy | Score, Character speed | Positive |
+| Hunger | Score, Death, Growling | Negative |
+| Sunburn | Score, Skin color | Negative |
+| Temperature | Score, Death | Center |
+| Time in the sun | Sunburn, Temperature | Center |
+| Water | Score, Death | Center |
 
 Day/night cycle
 -------------

@@ -7,6 +7,10 @@ Synopsis
 You're floating in the open ocean with debris floating around you.
 A life raft is also near by in which considently will where you will survive for the next 7 days.
 
+Disclaimer
+-------------
+The game is not supposed to be easy. The aim is to get a good score. If the game was easy it would not be difficult to get the best score.
+
 Phases
 -------------
 The game is split into three different phases.

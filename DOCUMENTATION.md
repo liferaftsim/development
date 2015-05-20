@@ -88,13 +88,13 @@ Each item when clicked will allow the player tochoose between currently possible
 
 Fishing
 -------------
-The better bait you have the better chance of success.
+The better bait you have the better chance of success. The chances in the following table is the chance per second. Remember to use Time.deltaTime to balance of the update rate.
 
 | Bait | Small fish | Medium fish | Large fish |
 | ---- | ---- | ---- | ---- |
-| None | 1 : 100 | 1 : 1,000 | 1 : 10,000 | 
-| Small fish | 0 | 1 : 50 | 1 : 500 |
-| Medium fish | 0 | 0 | 1 : 50 |
+| None | 1 : 2,500 | 1 : 5,000 | 1 : 10,000 | 
+| Small fish | 0 | 1 : 3,000 | 1 : 6,000 |
+| Medium fish | 0 | 0 | 1 : 4,000 |
 | Large fish | 0 | 0 | 0 |
 
 The chance of losing the bait is 1 : 90.

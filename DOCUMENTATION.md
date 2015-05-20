@@ -40,11 +40,13 @@ Hunger: +20 (positive is bad)
 >
 Total: -35
 
+Multiply the score by 1,000 so it looks like something.
+
 Character stats
 -------------
 Statistics are not only used to calculate the score as shown in the "Score" chapter but also to give visual and audio feedback to the player on how the character is doing, if not dead already.
 
-Each stat ranges between -100 and 100.
+Each stat is a float between -100 and 100.
 
 ### Table of stats
 | Stat | Feedback | Aim |
@@ -82,7 +84,20 @@ While in the raft player can click water to jump into the water and click items 
 Not for this version.
 
 ### Crafting
+Each item when clicked will allow the player tochoose between currently possible crafting options. The rafting is not instant though so the player should choose wisely.
 
+Fishing
+-------------
+The better bait you have the better chance of success.
+
+| Bait | Small fish | Medium fish | Large fish |
+| ---- | ---- | ---- | ---- |
+| None | 1 : 100 | 1 : 1,000 | 1 : 10,000 | 
+| Small fish | 0 | 1 : 50 | 1 : 500 |
+| Medium fish | 0 | 0 | 1 : 50 |
+| Large fish | 0 | 0 | 0 |
+
+The chance of losing the bait is 1 : 90.
 
 Items
 -------------

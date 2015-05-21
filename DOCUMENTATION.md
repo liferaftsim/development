@@ -6,6 +6,11 @@ Terminology
 -------------
 In this document we will refer to the real life human being that is supplying the game with keyboard and mouse input as the *player*. The character on screen that the player is controlling we refer to as the *hero*.
 
+Platform
+-------------
+* Desktop
+* Single player
+
 Synopsis
 -------------
 Our hero is floating in the open ocean with debris floating around him.
@@ -13,7 +18,7 @@ A life raft is also near by in which coincidently will where he will attempt to 
 
 Disclaimer
 -------------
-The game is not supposed to be easy. The aim is to get a good score. If the game was easy it would not be difficult to get the best score.
+The game is not supposed to be easy. The aim is to get a good score. If the game was easy it would not be difficult to get a good score.
 
 Phases
 -------------
@@ -73,7 +78,8 @@ Currently there is no plan to include weather like rain, wind, snow, blizzards, 
 
 Visual style
 -------------
-Realistic
+* Realistic
+* Birds view
 
 HUD
 -------------
@@ -119,3 +125,92 @@ Items
 | Paddle | Use | Used for paddling |
 | Reflective blanket | Use | Can be used for shade during the day and keep warm (or less cold?) during the night |
 
+Assets
+-------------
+This is a list of assets to create a put in the game.
+
+<table><tbody>
+<tr><td>
+<img src="image.png" align="right" width="200" height="200" hspace="10" hspace="10"/>
+<b>Small ditch bag</b><br/>
+Mesh: pending<br/>
+Texture: pending<br/>
+Audio: pending<br/>
+</td></tr>
+<tr><td>
+<b>Description</b><br />
+Contains a small set of items that might come in handy if the player is crafty. These items will not be random at first. When we have more items in the game we can start randomizing the content from game to game.
+The container itself is a 1 litre dry pouch that is sealed by folding the roll-top closure 3 times and then attaching the two buckles.
+</td></tr>
+<tr><td>
+<img src="image.png" align="right" width="200" height="200" hspace="10" hspace="10"/>
+<b>Life raft</b><br/>
+Mesh: pending<br/>
+Texture: pending<br/>
+Audio: pending<br/>
+</td></tr>
+<tr><td>
+<b>Description</b><br />
+</td></tr>
+<tr><td>
+<img src="image.png" align="right" width="200" height="200" hspace="10" hspace="10"/>
+<b>Water filter</b><br/>
+Mesh: pending<br/>
+Texture: pending<br/>
+Audio: pending<br/>
+</td></tr>
+<tr><td>
+<b>Description</b><br />
+</td></tr>
+<tr><td>
+<img src="image.png" align="right" width="200" height="200" hspace="10" hspace="10"/>
+<b>Water bottle</b><br/>
+Mesh: pending<br/>
+Texture: pending<br/>
+Audio: pending<br/>
+</td></tr>
+<tr><td>
+<b>Description</b><br />
+</td></tr>
+<tr><td>
+<img src="image.png" align="right" width="200" height="200" hspace="10" hspace="10"/>
+<b>Duct tape</b><br/>
+Mesh: pending<br/>
+Texture: pending<br/>
+Audio: pending<br/>
+</td></tr>
+<tr><td>
+<b>Description</b><br />
+</td></tr>
+<tr><td>
+<img src="image.png" align="right" width="200" height="200" hspace="10" hspace="10"/>
+<b>Paddle</b><br/>
+Mesh: pending<br/>
+Texture: pending<br/>
+Audio: pending<br/>
+</td></tr>
+<tr><td>
+<b>Description</b><br />
+</td></tr>
+<tr><td>
+<img src="image.png" align="right" width="200" height="200" hspace="10" hspace="10"/>
+<b>Reflective blanket</b><br/>
+Mesh: pending<br/>
+Texture: pending<br/>
+Audio: n/a<br/>
+</td></tr>
+<tr><td>
+<b>Description</b><br />
+</td></tr>
+<tr><td>
+<img src="image.png" align="right" width="200" height="200" hspace="10" hspace="10"/>
+<b>Hero character</b><br/>
+Mesh: pending<br/>
+Texture: pending<br/>
+Audio: pending<br/>
+</td></tr>
+<tr><td>
+<b>Description</b><br />
+</td></tr>
+</tbody>
+</table>

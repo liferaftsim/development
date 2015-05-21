@@ -6,8 +6,9 @@ Read the [documentation](DOCUMENTATION.md)
 
 Roadmap
 ---------------------------------
+0. Documentation
 1. Unity project (file structure, meta data files, etc)
-2. Water
+2. Ocean
 3. Temp character (from the new Unity demo)
 4. Crude bouyancy (just follow water height)
 5. Swim animations (tread, front crawl)

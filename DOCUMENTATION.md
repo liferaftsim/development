@@ -2,10 +2,14 @@ Documentation
 =============
 This is the documentation for the life raft simulator.
 
+Terminology
+-------------
+In this document we will refer to the real life human being that is supplying the game with keyboard and mouse input as the *player*. The character on screen that the player is controlling we refer to as the *hero*.
+
 Synopsis
 -------------
-You're floating in the open ocean with debris floating around you.
-A life raft is also near by in which coincidently will where you will survive for the next 7 days.
+Our hero is floating in the open ocean with debris floating around him.
+A life raft is also near by in which coincidently will where he will attempt to survive for the next 7 days.
 
 Disclaimer
 -------------
@@ -16,19 +20,19 @@ Phases
 The game is split into three different phases.
 
 ### Phase 1 - Debris field
-Loot is all around you but you don't have much time to choose what to take before it sinks or the raft floats away.
-Phase 2 begins when there is no more loot to collect.
+Loot is all around our hero but there is not much time to choose what to take before it sinks or the raft floats away.
+Phase 2 begins when there is no more loot to collect in the water surface.
 
 ### Phase 2 - Alone
-You're in the raft now make the best of it. Craft a hook to fish, put up some shade, filter some water, anything to make the stay in raft a little less unbearable.
+Our hero is in the raft now it is time to make the best of it. Craft a hook to fish, put up some shade, filter some water, anything to make the stay in raft a little less unbearable.
 Phase 3 starts when land is spotted.
 
 ### Phase 3 - Rescue
-You must paddle to land.
+Our hero must paddle to land.
 
 Score
 -------------
-The score is based on the current character stats.
+The score is based on the current stats of the hero.
 
 > **Example** 
 >
@@ -44,9 +48,9 @@ Multiply the score by 1,000 so it looks like something.
 
 Character stats
 -------------
-Statistics are not only used to calculate the score as shown in the "Score" chapter but also to give visual and audio feedback to the player on how the character is doing, if not dead already.
+Statistics are not only used to calculate the score as shown in the "Score" chapter but also to give visual and audio feedback to the player on how the hero is doing, if not dead already.
 
-Each stat is a float between -100 and 100.
+Each stat is a floating-point number tbetween -100.00 and 100.00.
 
 ### Table of stats
 | Stat | Feedback | Aim |
@@ -71,24 +75,28 @@ Visual style
 -------------
 Realistic
 
+HUD
+-------------
+The heads up display will be very simple. The game will be too easy if we simply show the hero and environment stats. The HUD will only contain the current score. Everything else will be available to the player through visual and audio feedback.
+
 Controls
 -------------
 
 ### Floating
-While in the water player can click on water to swim there, click on items to collect them and click on raft to board it.
+While in the water player can click on water to make the hero swim there, click on items to make the hero collect them and click on raft to make the hero board it.
 
 ### On the raft
-While in the raft player can click water to jump into the water and click items to interact (use/craft) with them.
+While in the raft player can click water to make the hero go into the water and click items to interact (use/craft) with them.
 
 ### Diving
 Not for this version.
 
 ### Crafting
-Each item when clicked will allow the player tochoose between currently possible crafting options. The rafting is not instant though so the player should choose wisely.
+Each item when clicked will allow the player to choose between currently possible crafting options. The rafting is not instant though so the player should choose wisely.
 
 Fishing
 -------------
-The better bait you have the better chance of success. The chances in the following table is the chance per second. Remember to use Time.deltaTime to balance of the update rate.
+The bigger bait used while fishing the better chance of success. The chances in the following table is the chance per second. Remember to use Time.deltaTime to balance of the update rate.
 
 | Bait | Small fish | Medium fish | Large fish |
 | ---- | ---- | ---- | ---- |
@@ -102,7 +110,7 @@ The chance of losing the bait is 1 : 90.
 Items
 -------------
 
-| Name | Usage | Description |
+| Type | Usage | Description |
 | ---- | ---- | ---- |
 | Ditch bag | Open | Contains the most neccsary stuff found in life rafts |
 | Water filter | Use, Disassemble (later) | Can filter ocean water into drinkable water (slow) or be used as parts (later) |

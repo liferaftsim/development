@@ -136,6 +136,7 @@ This is a list of assets to create a put in the game.
 Mesh: pending<br/>
 Texture: pending<br/>
 Audio: pending<br/>
+Animation: ?<br/>
 </td></tr>
 <tr><td>
 <b>Description</b><br />
@@ -148,9 +149,11 @@ The container itself is a 1 litre dry pouch that is sealed by folding the roll-t
 Mesh: pending<br/>
 Texture: pending<br/>
 Audio: pending<br/>
+Animation: n/a<br/>
 </td></tr>
 <tr><td>
 <b>Description</b><br />
+The raft is inflatable and targeted for 2 people and has 8 sides with a diameter of 3m. The raft is yellow to be easily spotted by rescuers. On the sides text are written like manufacturer, model, serial number, approved for 2 people, where to board and so on. There are also rope following the side to allow people to grab on to the raft.
 </td></tr>
 <tr><td>
 <img src="image.png" align="right" width="200" height="200" hspace="10" hspace="10"/>
@@ -158,6 +161,7 @@ Audio: pending<br/>
 Mesh: pending<br/>
 Texture: pending<br/>
 Audio: pending<br/>
+Animation: pending<br/>
 </td></tr>
 <tr><td>
 <b>Description</b><br />
@@ -168,6 +172,7 @@ Audio: pending<br/>
 Mesh: pending<br/>
 Texture: pending<br/>
 Audio: pending<br/>
+Animation: n/a<br/>
 </td></tr>
 <tr><td>
 <b>Description</b><br />
@@ -178,6 +183,7 @@ Audio: pending<br/>
 Mesh: pending<br/>
 Texture: pending<br/>
 Audio: pending<br/>
+Animation: n/a<br/>
 </td></tr>
 <tr><td>
 <b>Description</b><br />
@@ -188,6 +194,7 @@ Audio: pending<br/>
 Mesh: pending<br/>
 Texture: pending<br/>
 Audio: pending<br/>
+Animation: n/a<br/>
 </td></tr>
 <tr><td>
 <b>Description</b><br />
@@ -198,6 +205,7 @@ Audio: pending<br/>
 Mesh: pending<br/>
 Texture: pending<br/>
 Audio: n/a<br/>
+Animation: n/a<br/>
 </td></tr>
 <tr><td>
 <b>Description</b><br />
@@ -208,6 +216,7 @@ Audio: n/a<br/>
 Mesh: pending<br/>
 Texture: pending<br/>
 Audio: pending<br/>
+Animation: pending<br/>
 </td></tr>
 <tr><td>
 <b>Description</b><br />

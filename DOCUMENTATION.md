@@ -144,7 +144,7 @@ Contains a small set of items that might come in handy if the player is crafty. 
 The container itself is a 1 litre dry pouch that is sealed by folding the roll-top closure 3 times and then attaching the two buckles.
 </td></tr>
 <tr><td>
-<img src="image.png" align="right" width="200" height="200" hspace="10" hspace="10"/>
+<img src="sketches/life raft 1.png" align="right" width="200" height="200" hspace="10" hspace="10"/>
 <b>Life raft</b><br/>
 Mesh: pending<br/>
 Texture: pending<br/>
@@ -165,6 +165,7 @@ Animation: pending<br/>
 </td></tr>
 <tr><td>
 <b>Description</b><br />
+The water filter is a device that using a hand driven lever pumps water from the ocean through a filter and out comes drinkable water. The device is not very fast so it takes quite a while to fill a bottle.
 </td></tr>
 <tr><td>
 <img src="image.png" align="right" width="200" height="200" hspace="10" hspace="10"/>
@@ -176,6 +177,7 @@ Animation: n/a<br/>
 </td></tr>
 <tr><td>
 <b>Description</b><br />
+The bottle is for storing water or other liquids. Can be used with the water filter to collect water for later drinking.
 </td></tr>
 <tr><td>
 <img src="image.png" align="right" width="200" height="200" hspace="10" hspace="10"/>
@@ -187,6 +189,7 @@ Animation: n/a<br/>
 </td></tr>
 <tr><td>
 <b>Description</b><br />
+The tape is used for crafting.
 </td></tr>
 <tr><td>
 <img src="image.png" align="right" width="200" height="200" hspace="10" hspace="10"/>
@@ -198,6 +201,7 @@ Animation: n/a<br/>
 </td></tr>
 <tr><td>
 <b>Description</b><br />
+The paddle can not only be used for paddling but also for crafting.
 </td></tr>
 <tr><td>
 <img src="image.png" align="right" width="200" height="200" hspace="10" hspace="10"/>
@@ -209,6 +213,7 @@ Animation: n/a<br/>
 </td></tr>
 <tr><td>
 <b>Description</b><br />
+The blanket can be used to keep the hero in the shade protected from the sun and during the night to keep warm.
 </td></tr>
 <tr><td>
 <img src="image.png" align="right" width="200" height="200" hspace="10" hspace="10"/>
@@ -220,6 +225,7 @@ Animation: pending<br/>
 </td></tr>
 <tr><td>
 <b>Description</b><br />
+The hero is the human character who the player controls. Somehow we need to be able to visualize the suns effect on the hero's skin, either by chaging a texture or using a shader.
 </td></tr>
 </tbody>
 </table>

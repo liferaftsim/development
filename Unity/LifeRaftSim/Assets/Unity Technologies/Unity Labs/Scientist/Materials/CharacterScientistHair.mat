@@ -135,6 +135,14 @@ Material:
         second: .266000003
       data:
         first:
+          name: _SrcBlend
+        second: 1
+      data:
+        first:
+          name: _DstBlend
+        second: 0
+      data:
+        first:
           name: _SpecPower1
         second: 102.5
       data:
@@ -185,14 +193,6 @@ Material:
         first:
           name: _ambientSpecularMultiplier
         second: 1
-      data:
-        first:
-          name: _SrcBlend
-        second: 1
-      data:
-        first:
-          name: _DstBlend
-        second: 0
       data:
         first:
           name: _ZWrite
@@ -292,6 +292,10 @@ Material:
         second: {r: .0808823705, g: .0785034746, b: .0749351382, a: 1}
       data:
         first:
+          name: _SpecularColor
+        second: {r: 0, g: 0, b: 0, a: 1}
+      data:
+        first:
           name: _HairColour
         second: {r: .0784313753, g: .0392156877, b: .00392156886, a: 1}
       data:
@@ -310,10 +314,6 @@ Material:
         first:
           name: _EmissionColorWithMapUI
         second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _SpecularColor
-        second: {r: 0, g: 0, b: 0, a: 1}
       data:
         first:
           name: _KKPrimarySpecularColor

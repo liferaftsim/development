@@ -4,19 +4,20 @@ Welcome to the development repository for the life raft simulator.
 
 Read the [documentation](DOCUMENTATION.md)
 
+Features
+---------------------------------
+* Open ocean
+
 Roadmap
 ---------------------------------
-0. Documentation
-1. Unity project (file structure, meta data files, etc)
-2. Ocean
-3. Temp character (from the new Unity demo)
-4. Crude bouyancy (just follow water height)
-5. Swim animations (tread, front crawl)
-6. Water interaction
-6. Life raft
-7. A little less crude bouyancy (rotate the raft according to waves)
-8. Raft boarding animation
-9. Raft interaction (board, leave)
+1. Temp character (from the new Unity demo)
+2. Crude bouyancy (just follow water height)
+3. Swim animations (tread, front crawl)
+4. Water interaction
+5. Life raft
+6. A little less crude bouyancy (rotate the raft according to waves)
+7. Raft boarding animation
+8. Raft interaction (board, leave)
 
 ..more will be planned later
 

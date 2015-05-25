@@ -4,6 +4,8 @@ Welcome to the development repository for the life raft simulator.
 
 Read the [documentation](DOCUMENTATION.md)
 
+![Treading Water](gifs/20150525 - treading water.gif)
+
 Features
 ---------------------------------
 * Open ocean

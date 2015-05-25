@@ -54,7 +54,9 @@ namespace Game
 
         private void Move()
         {
-            this.transform.position = this.target.position + this.offset;
+            var targetPosition = this.target.position;
+            targetPosition.y = 0.0f;
+            this.transform.position = targetPosition + this.offset;
         }
     }
 }

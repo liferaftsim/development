@@ -10,14 +10,12 @@ Features
 
 Roadmap
 ---------------------------------
-1. Temp character (from the new Unity demo)
-2. Crude bouyancy (just follow water height)
-3. Swim animations (tread, front crawl)
-4. Water interaction
-5. Life raft
-6. A little less crude bouyancy (rotate the raft according to waves)
-7. Raft boarding animation
-8. Raft interaction (board, leave)
+1. Swim animations (tread, front crawl)
+2. Water interaction
+3. Life raft
+4. A little less crude bouyancy (rotate the raft according to waves)
+5. Raft boarding animation
+6. Raft interaction (board, leave)
 
 ..more will be planned later
 

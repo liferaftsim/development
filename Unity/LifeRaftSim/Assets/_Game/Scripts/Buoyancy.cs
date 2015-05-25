@@ -14,13 +14,6 @@ namespace Game
         private float yOffset = 0.0f;
 
         /// <summary>
-        /// Name of the game object that represents the ocean surface.
-        /// The Y position of this game object is used as ocean surface position.
-        /// </summary>
-        [SerializeField]
-        private string waterGameObjectName = "Water";
-
-        /// <summary>
         /// Speed of the cosine function.
         /// The cosine is used to add noise to the buoyancy.
         /// This affects how fast the noise is moving the game object up and down.
@@ -37,16 +30,16 @@ namespace Game
         private float yConsineMultiplier = 1.0f;
 
         /// <summary>
-        /// The ocean surface game object.
+        /// Ocean component used for getting the Y position of the ocean surface.
         /// </summary>
-        private Transform water;
+        private Ocean ocean;
 
         /// <summary>
         /// Called by Unity.
         /// </summary>
         private void Start()
         {
-            this.CacheWater();
+            this.CacheOcean();
         }
 
         /// <summary>
@@ -58,18 +51,17 @@ namespace Game
         }
 
         /// <summary>
-        /// Finds and stores the ocean surface game object for later reference.
+        /// Finds and stores the ocean behaviour for later reference.
         /// </summary>
-        private void CacheWater()
+        private void CacheOcean()
         {
-            var waterGameObject = GameObject.Find(this.waterGameObjectName);
-            if (waterGameObject == null)
+            this.ocean = GameObject.FindObjectOfType<Ocean>();
+            if (this.ocean == null)
             {
-                Debug.LogError(this.name + ": No game object named \"" + this.waterGameObjectName + "\" found.");
+                Debug.LogError(this.name + ": No game object containing \"Ocean\" behaviour found.");
                 this.enabled = false;
                 return;
             }
-            this.water = waterGameObject.transform;
         }
 
         /// <summary>
@@ -77,8 +69,9 @@ namespace Game
         /// </summary>
         private void MoveY()
         {
+            var oceanSurfaceHeight = this.ocean.GetHeight(this.transform.position);
             var position = this.transform.position;
-            position.y = this.water.position.y + this.yOffset + Mathf.Cos(Time.time * this.yConsineSpeed) * this.yConsineMultiplier;
+            position.y = oceanSurfaceHeight + this.yOffset + Mathf.Cos(Time.time * this.yConsineSpeed) * this.yConsineMultiplier;
             this.transform.position = position;
         }
     }

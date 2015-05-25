@@ -1936,7 +1936,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yOffset: -1.5
-  waterGameObjectName: WaterProDaytime
   yConsineSpeed: 2
   yConsineMultiplier: .0500000007
 --- !u!137 &13701916

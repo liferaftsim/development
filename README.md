@@ -7,6 +7,8 @@ Read the [documentation](DOCUMENTATION.md)
 Features
 ---------------------------------
 * Open ocean
+* Placeholder character
+* Crude buoyancy
 
 Roadmap
 ---------------------------------

@@ -11,15 +11,15 @@ Features
 * Open ocean
 * Placeholder character
 * Crude buoyancy
+* Swim animations
 
 Roadmap
 ---------------------------------
-1. Swim animations (tread, front crawl)
-2. Water interaction
-3. Life raft
-4. A little less crude bouyancy (rotate the raft according to waves)
-5. Raft boarding animation
-6. Raft interaction (board, leave)
+1. Water interaction
+2. Life raft
+3. A little less crude bouyancy (rotate the raft according to waves)
+4. Raft boarding animation
+5. Raft interaction (board, leave)
 
 ..more will be planned later
 

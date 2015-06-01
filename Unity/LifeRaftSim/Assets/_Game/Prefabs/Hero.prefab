@@ -85,6 +85,7 @@ GameObject:
   - 4: {fileID: 490668}
   - 95: {fileID: 9563990}
   - 114: {fileID: 11455624}
+  - 114: {fileID: 11495744}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Player
@@ -1938,6 +1939,17 @@ MonoBehaviour:
   yOffset: -1.5
   yConsineSpeed: 2
   yConsineMultiplier: .0500000007
+--- !u!114 &11495744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 212797478478bdf48b29aa5feac90eea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!137 &13701916
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

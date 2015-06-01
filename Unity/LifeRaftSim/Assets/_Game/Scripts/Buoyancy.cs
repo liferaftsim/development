@@ -35,6 +35,21 @@ namespace Game
         private Ocean ocean;
 
         /// <summary>
+        /// Gets or sets the additional height offset relative to the ocean surface.
+        /// </summary>
+        public float YOffset
+        {
+            get
+            {
+                return this.yOffset;
+            }
+            set
+            {
+                this.yOffset = value;
+            }
+        }
+
+        /// <summary>
         /// Called by Unity.
         /// </summary>
         private void Start()

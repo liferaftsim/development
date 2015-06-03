@@ -14,11 +14,6 @@ namespace Game
         private Animator animator;
 
         /// <summary>
-        /// The character's buoyancy component.
-        /// </summary>
-        private Buoyancy buoyancy;
-
-        /// <summary>
         /// The target position.
         /// </summary>
         private Vector3 target;
@@ -50,7 +45,6 @@ namespace Game
         private void CacheComponents()
         {
             this.animator = this.GetComponent<Animator>();
-            this.buoyancy = this.GetComponent<Buoyancy>();
         }
 
         /// <summary>
@@ -66,16 +60,14 @@ namespace Game
                 = 0.0f;
 
             var distance = Vector3.Distance(currentPosition, targetPosition);
-            if (distance < 1.0f)
+            if (distance < 2.0f)
             {
                 this.animator.SetBool("IsForwardCrawling", false);
-                this.buoyancy.YOffset = -1.5f; // TODO think we can remove this when we have fixed the model animations
                 return;
             }
 
             this.animator.SetBool("IsInWater", true); // TODO change to raycasting at some point
             this.animator.SetBool("IsForwardCrawling", true); // TODO change to reflect movement according to surface, in water swimming, on raft crawling?
-            this.buoyancy.YOffset = -0.5f; // TODO think we can remove this when we have fixed the model animations
 
             this.transform.forward = this.target - this.transform.position;
             this.transform.position += this.transform.forward * this.forwardCrawlSpeed * Time.deltaTime;

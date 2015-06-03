@@ -102,9 +102,26 @@ namespace Game
             menuItem.localRotation = Quaternion.identity;
 
             var player = GameObject.FindGameObjectWithTag(this.playerTagName);
+            if (player == null)
+            {
+                Debug.Log("Player not found.");
+                return;
+            }
+            
             var character = player.GetComponent<Character>();
+            if(character == null)
+            {
+                Debug.LogError("Character not found.");
+                return;
+            }
 
             var button = menuItem.GetComponent<Button>();
+            if(button == null)
+            {
+                Debug.LogError("Button not found.");
+                return;
+            }
+
             button.onClick.AddListener(() => character.SetTargetDestination(hit.point));
 
             this.canvas.gameObject.SetActive(true);

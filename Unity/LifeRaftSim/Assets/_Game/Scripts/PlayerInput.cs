@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Game
@@ -82,7 +83,7 @@ namespace Game
             this.character = player
                 .GetComponent<Character>()
                 .DisableIfNull(this, "character");
-                ;
+            ;
         }
 
         /// <summary>
@@ -95,16 +96,16 @@ namespace Game
                 return;
             }
 
-            if(this.canvas.gameObject.activeSelf)
+            // makre sure to check this as ui is not hit on raycasting
+            if (EventSystem.current.IsPointerOverGameObject())
             {
-                this.canvas.gameObject.SetActive(false);
                 return;
             }
 
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if(!Physics.Raycast(ray, out hit, this.raycastMaxDistance, this.raycastLayerMask))
+            if (!Physics.Raycast(ray, out hit, this.raycastMaxDistance, this.raycastLayerMask))
             {
                 return;
             }
@@ -117,10 +118,7 @@ namespace Game
             this.canvas.position = hit.point;
             this.canvas.forward = hit.point - ray.origin;
 
-            if (this.canvas.childCount > 0)
-            {
-                GameObject.Destroy(this.canvas.GetChild(0).gameObject);
-            }
+            this.canvas.DestroyAllChildren();
 
             var menuItem = GameObject.Instantiate(this.menuItemPrefab, Vector3.zero, Quaternion.identity) as RectTransform;
             menuItem.SetParent(this.canvas);
@@ -137,7 +135,11 @@ namespace Game
                 return;
             }
 
-            button.onClick.AddListener(() => this.character.SetTargetDestination(hit.point));
+            button.onClick.AddListener(() =>
+            {
+                this.canvas.gameObject.SetActive(false);
+                this.character.SetTargetDestination(hit.point);
+            });
 
             this.canvas.gameObject.SetActive(true);
         }

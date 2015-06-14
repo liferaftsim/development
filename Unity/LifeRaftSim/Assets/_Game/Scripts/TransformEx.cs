@@ -10,14 +10,16 @@ namespace Game
         /// <summary>
         /// Destroys all the children of the specified <paramref name="parent"/> <see cref="T:UnityEngine.Transform"/>.
         /// </summary>
-        /// <param name="parent"></param>
+        /// <param name="parent">
+        /// The parent <see cref="T:UnityEngine.Transform"/> who's children to destroy.
+        /// </param>
         public static void DestroyAllChildren(this Transform parent)
         {
             // starting at the back of the list to ensure it still works the day Unity destroys the children immediatly
-            for (var index = parent.childCount; index > 0; index--)
+            for (var index = parent.childCount - 1; index >= 0; index--)
             {
                 var child = parent.GetChild(index);
-                GameObject.Destroy(child);
+                GameObject.Destroy(child.gameObject);
             }
         }
     }

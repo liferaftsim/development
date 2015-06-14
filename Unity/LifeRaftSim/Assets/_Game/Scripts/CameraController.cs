@@ -42,13 +42,10 @@ namespace Game
         /// </summary>
         private void CacheTarget()
         {
-            var targetGameObject = GameObject.FindGameObjectWithTag(this.targetTagName);
-            if (targetGameObject == null)
-            {
-                Debug.LogError(this.name + ": No game object tagged \"" + this.targetTagName + "\" found.");
-                this.enabled = false;
-                return;
-            }
+            var targetGameObject = GameObject
+                .FindGameObjectWithTag(this.targetTagName)
+                .DisableIfNull(this, "targetGameObject")
+                ;
             this.target = targetGameObject.transform;
         }
 

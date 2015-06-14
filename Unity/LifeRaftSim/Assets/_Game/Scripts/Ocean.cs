@@ -30,13 +30,10 @@ namespace Game
         /// </summary>
         private void CacheWater()
         {
-            var waterGameObject = GameObject.Find(this.waterGameObjectName);
-            if (waterGameObject == null)
-            {
-                Debug.LogError(this.name + ": No game object named \"" + this.waterGameObjectName + "\" found.");
-                this.enabled = false;
-                return;
-            }
+            var waterGameObject = GameObject
+                .Find(this.waterGameObjectName)
+                .DisableIfNull(this, "waterGameObject")
+                ;
             this.water = waterGameObject.transform;
         }
 
@@ -54,5 +51,5 @@ namespace Game
         {
             return this.water.position.y;
         }
-    } 
+    }
 }

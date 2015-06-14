@@ -49,11 +49,40 @@ namespace Game
 #pragma warning restore 0649 // reenable the "Field XYZ is never assigned to, and will always have its default value XX" compiler warning
 
         /// <summary>
+        /// The character component.
+        /// </summary>
+        private Character character;
+
+        /// <summary>
+        /// Called by Unity.
+        /// </summary>
+        private void Start()
+        {
+            this.CacheComponents();
+        }
+
+        /// <summary>
         /// Called by Unity.
         /// </summary>
         private void Update()
         {
             this.HandleInput();
+        }
+
+        /// <summary>
+        /// Caches the component dependencies for quick access later.
+        /// </summary>
+        private void CacheComponents()
+        {
+            var player = GameObject
+                .FindGameObjectWithTag(this.playerTagName)
+                .DisableIfNull(this, "player")
+                ;
+
+            this.character = player
+                .GetComponent<Character>()
+                .DisableIfNull(this, "character");
+                ;
         }
 
         /// <summary>
@@ -101,28 +130,14 @@ namespace Game
             menuItem.anchoredPosition3D = Vector3.zero;
             menuItem.localRotation = Quaternion.identity;
 
-            var player = GameObject.FindGameObjectWithTag(this.playerTagName);
-            if (player == null)
-            {
-                Debug.Log("Player not found.");
-                return;
-            }
-            
-            var character = player.GetComponent<Character>();
-            if(character == null)
-            {
-                Debug.LogError("Character not found.");
-                return;
-            }
-
             var button = menuItem.GetComponent<Button>();
-            if(button == null)
+            if (button == null)
             {
                 Debug.LogError("Button not found.");
                 return;
             }
 
-            button.onClick.AddListener(() => character.SetTargetDestination(hit.point));
+            button.onClick.AddListener(() => this.character.SetTargetDestination(hit.point));
 
             this.canvas.gameObject.SetActive(true);
         }

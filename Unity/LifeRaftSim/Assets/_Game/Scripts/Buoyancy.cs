@@ -70,13 +70,10 @@ namespace Game
         /// </summary>
         private void CacheOcean()
         {
-            this.ocean = GameObject.FindObjectOfType<Ocean>();
-            if (this.ocean == null)
-            {
-                Debug.LogError(this.name + ": No game object containing \"Ocean\" behaviour found.");
-                this.enabled = false;
-                return;
-            }
+            this.ocean = GameObject
+                .FindObjectOfType<Ocean>()
+                .DisableIfNull(this, "ocean")
+                ;
         }
 
         /// <summary>

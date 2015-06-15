@@ -31,6 +31,7 @@ GameObject:
   - 64: {fileID: 6421026}
   - 114: {fileID: 11400300}
   - 114: {fileID: 11462870}
+  - 54: {fileID: 5492192}
   m_Layer: 0
   m_Name: LifeRaft
   m_TagString: Untagged
@@ -249,6 +250,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170726}
   m_Mesh: {fileID: 4300016, guid: 31013bba0fab72a4aba012cf44ed39e2, type: 3}
+--- !u!54 &5492192
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141956}
+  serializedVersion: 2
+  m_Mass: .100000001
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!64 &6421026
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -259,7 +275,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_Mesh: {fileID: 4300014, guid: 31013bba0fab72a4aba012cf44ed39e2, type: 3}
 --- !u!64 &6459328
 MeshCollider:
@@ -271,7 +287,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_Mesh: {fileID: 4300018, guid: 31013bba0fab72a4aba012cf44ed39e2, type: 3}
 --- !u!64 &6482584
 MeshCollider:
@@ -283,7 +299,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_Mesh: {fileID: 4300016, guid: 31013bba0fab72a4aba012cf44ed39e2, type: 3}
 --- !u!64 &6496232
 MeshCollider:
@@ -295,7 +311,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_Mesh: {fileID: 4300020, guid: 31013bba0fab72a4aba012cf44ed39e2, type: 3}
 --- !u!114 &11400300
 MonoBehaviour:
@@ -324,7 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimumRandomRotation: -10
   maximumRandomRotation: 9
-  velocity: {x: .100000001, y: 0, z: .109999999}
+  velocity: {x: 5.25, y: 0, z: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

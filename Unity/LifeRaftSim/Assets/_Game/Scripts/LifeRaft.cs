@@ -5,6 +5,7 @@ namespace Game
     /// <summary>
     /// Behaviour script for life raft.
     /// </summary>
+    [RequireComponent(typeof(Rigidbody))]
     public class LifeRaft : MonoBehaviour
     {
         /// <summary>
@@ -25,12 +26,40 @@ namespace Game
         public Vector3 velocity;
 
         /// <summary>
+        /// Cached reference to the game object's <see cref="T:UnityEngine.Rigidbody"/> component.
+        /// </summary>
+        private new Rigidbody rigidbody;
+
+        /// <summary>
+        /// Called by Unity.
+        /// </summary>
+        private void Start()
+        {
+            this.CacheComponents();
+        }
+
+        /// <summary>
         /// Called by Unity.
         /// </summary>
         private void Update()
         {
             this.Rotate();
+        }
+
+        /// <summary>
+        /// Called by Unity.
+        /// </summary>
+        private void FixedUpdate()
+        {
             this.Move();
+        }
+
+        /// <summary>
+        /// Caches the components used in this script for quick use later on.
+        /// </summary>
+        private void CacheComponents()
+        {
+            this.rigidbody = this.GetComponent<Rigidbody>();
         }
 
         /// <summary>
@@ -47,7 +76,7 @@ namespace Game
         /// </summary>
         private void Move()
         {
-            this.transform.position += this.velocity * Time.deltaTime;
+            this.rigidbody.AddForce(this.velocity, ForceMode.Impulse);
         }
-    } 
+    }
 }

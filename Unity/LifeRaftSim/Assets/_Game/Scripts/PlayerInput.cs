@@ -24,22 +24,10 @@ namespace Game
         private float raycastMaxDistance = 20.0f;
 
         /// <summary>
-        /// Name of the game object that represents the water when ray hits it.
-        /// </summary>
-        [SerializeField]
-        private string waterGameObjectName = "Water";
-
-        /// <summary>
         /// The menu canvas to position and add/remove menu items to.
         /// </summary>
         [SerializeField]
         private Transform canvas;
-
-        /// <summary>
-        /// Name of the tag representing the player.
-        /// </summary>
-        [SerializeField]
-        private string playerTagName = "Player";
 
         /// <summary>
         /// The menu item prefab.
@@ -50,16 +38,12 @@ namespace Game
 #pragma warning restore 0649 // reenable the "Field XYZ is never assigned to, and will always have its default value XX" compiler warning
 
         /// <summary>
-        /// The character component.
+        /// Gets the last <see cref="T:UnityEngine.RaycastHit"/>.
         /// </summary>
-        private Character character;
-
-        /// <summary>
-        /// Called by Unity.
-        /// </summary>
-        private void Start()
+        public RaycastHit LastHit
         {
-            this.CacheComponents();
+            get;
+            private set;
         }
 
         /// <summary>
@@ -68,22 +52,6 @@ namespace Game
         private void Update()
         {
             this.HandleInput();
-        }
-
-        /// <summary>
-        /// Caches the component dependencies for quick access later.
-        /// </summary>
-        private void CacheComponents()
-        {
-            var player = GameObject
-                .FindGameObjectWithTag(this.playerTagName)
-                .DisableIfNull(this, "player")
-                ;
-
-            this.character = player
-                .GetComponent<Character>()
-                .DisableIfNull(this, "character");
-            ;
         }
 
         /// <summary>
@@ -107,11 +75,16 @@ namespace Game
 
             if (!Physics.Raycast(ray, out hit, this.raycastMaxDistance, this.raycastLayerMask))
             {
+                this.LastHit = new RaycastHit();
+                this.canvas.gameObject.SetActive(false);
                 return;
             }
+            this.LastHit = hit;
 
-            if (hit.collider.name != this.waterGameObjectName)
+            var interactable = hit.collider.GetComponent<IInteractable>();
+            if (interactable == null)
             {
+                this.canvas.gameObject.SetActive(false);
                 return;
             }
 
@@ -120,26 +93,28 @@ namespace Game
 
             this.canvas.DestroyAllChildren();
 
-            var menuItem = GameObject.Instantiate(this.menuItemPrefab, Vector3.zero, Quaternion.identity) as RectTransform;
-            menuItem.SetParent(this.canvas);
-            menuItem.position = Vector3.zero;
-            menuItem.rotation = Quaternion.identity;
-            menuItem.localScale = Vector3.one;
-            menuItem.anchoredPosition3D = Vector3.zero;
-            menuItem.localRotation = Quaternion.identity;
-
-            var button = menuItem.GetComponent<Button>();
-            if (button == null)
+            var interactions = interactable.GetInteractions();
+            for (var index = 0; index < interactions.Length; index++)
             {
-                Debug.LogError("Button not found.");
-                return;
+                var interaction = interactions[index];
+                var menuItem = GameObject.Instantiate(this.menuItemPrefab, Vector3.zero, Quaternion.identity) as RectTransform;
+                menuItem.SetParent(this.canvas);
+                menuItem.position = Vector3.zero;
+                menuItem.rotation = Quaternion.identity;
+                menuItem.localScale = Vector3.one;
+                menuItem.anchoredPosition3D = new Vector3(0.0f, index * 26.0f, 0.0f);
+                menuItem.localRotation = Quaternion.identity;
+
+                var button = menuItem.GetComponent<Button>();
+                button.onClick.AddListener(() =>
+                {
+                    this.canvas.gameObject.SetActive(false);
+                    interaction.Action();
+                });
+
+                var text = menuItem.GetComponent<Text>();
+                text.text = interaction.Caption;
             }
-
-            button.onClick.AddListener(() =>
-            {
-                this.canvas.gameObject.SetActive(false);
-                this.character.SetTargetDestination(hit.point);
-            });
 
             this.canvas.gameObject.SetActive(true);
         }

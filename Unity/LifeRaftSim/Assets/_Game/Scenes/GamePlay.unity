@@ -280,11 +280,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raycastLayerMask:
     serializedVersion: 2
-    m_Bits: 16
+    m_Bits: 17
   raycastMaxDistance: 40
-  waterGameObjectName: WaterProDaytime
   canvas: {fileID: 209862500}
-  playerTagName: Player
   menuItemPrefab: {fileID: 22493656, guid: 1cfaf6bd11f50c941b2c346aab8e5fe4, type: 2}
 --- !u!4 &382406475
 Transform:
@@ -337,7 +335,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11478458, guid: 62c2a8adbee394e46b0a69ddb33879d3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 62c2a8adbee394e46b0a69ddb33879d3, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1384947295
@@ -400,6 +399,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!1 &1794951546 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 159324, guid: 62c2a8adbee394e46b0a69ddb33879d3, type: 2}
+  m_PrefabInternal: {fileID: 1086731125}
+--- !u!114 &1794951552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1794951546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70e41b04f89ab1428835d0e47bd7dcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1796124213
 Prefab:
   m_ObjectHideFlags: 0

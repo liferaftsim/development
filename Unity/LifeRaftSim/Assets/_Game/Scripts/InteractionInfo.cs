@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 
 namespace Game
 {
@@ -19,7 +20,7 @@ namespace Game
         /// <summary>
         /// Gets the delegate to invoke to start the interaction. 
         /// </summary>
-        public Action Action
+        public Func<IEnumerator> Action
         {
             get;
             private set;
@@ -34,7 +35,7 @@ namespace Game
         /// <param name="action">
         /// The delegate to invoke to start the interaction. 
         /// </param>
-        public InteractionInfo(string caption, Action action)
+        public InteractionInfo(string caption, Func<IEnumerator> action)
         {
             this.Caption = caption;
             this.Action = action;

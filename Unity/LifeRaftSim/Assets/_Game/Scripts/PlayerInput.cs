@@ -109,7 +109,7 @@ namespace Game
                 button.onClick.AddListener(() =>
                 {
                     this.canvas.gameObject.SetActive(false);
-                    interaction.Action();
+                    this.StartCoroutine(interaction.Action());
                 });
 
                 var text = menuItem.GetComponent<Text>();

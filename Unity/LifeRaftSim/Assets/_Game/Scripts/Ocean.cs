@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Game
 {
@@ -72,9 +73,12 @@ namespace Game
         /// <summary>
         /// Interaction to swim to the location.
         /// </summary>
-        private void SwimHere()
+        private IEnumerator SwimHere()
         {
-            this.character.SetTargetDestination(this.playerInput.LastHit.point);
+            foreach (var x in this.character.SwimTo(this.playerInput.LastHit.point))
+            {
+                yield return x;
+            }
         }
     }
 }

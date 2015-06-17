@@ -55,9 +55,31 @@ namespace Game
         }
 
         /// <summary>
-        /// Handle input from user.
+        /// Handles input from player.
         /// </summary>
         private void HandleInput()
+        {
+            this.HandleLeftClick();
+            this.HandleEscapeKey();
+        }
+
+        /// <summary>
+        /// Handles escape key input from the player. 
+        /// </summary>
+        private void HandleEscapeKey()
+        {
+            if (!Input.GetKeyUp(KeyCode.Escape))
+            {
+                return;
+            }
+
+            this.HideCanvas();
+        }
+
+        /// <summary>
+        /// Handles left click input from player.
+        /// </summary>
+        private void HandleLeftClick()
         {
             if (!Input.GetMouseButtonUp(0))
             {
@@ -76,7 +98,7 @@ namespace Game
             if (!Physics.Raycast(ray, out hit, this.raycastMaxDistance, this.raycastLayerMask))
             {
                 this.LastHit = new RaycastHit();
-                this.canvas.gameObject.SetActive(false);
+                this.HideCanvas();
                 return;
             }
             this.LastHit = hit;
@@ -84,7 +106,7 @@ namespace Game
             var interactable = hit.collider.GetComponent<IInteractable>();
             if (interactable == null)
             {
-                this.canvas.gameObject.SetActive(false);
+                this.HideCanvas();
                 return;
             }
 
@@ -108,7 +130,7 @@ namespace Game
                 var button = menuItem.GetComponent<Button>();
                 button.onClick.AddListener(() =>
                 {
-                    this.canvas.gameObject.SetActive(false);
+                    this.HideCanvas();
                     this.StartCoroutine(interaction.Action());
                 });
 
@@ -116,6 +138,22 @@ namespace Game
                 text.text = interaction.Caption;
             }
 
+            this.ShowCanvas();
+        }
+
+        /// <summary>
+        /// Makes the canvas invisible.
+        /// </summary>
+        private void HideCanvas()
+        {
+            this.canvas.gameObject.SetActive(false);
+        }
+
+        /// <summary>
+        /// Makes the canvas visible.
+        /// </summary>
+        private void ShowCanvas()
+        {
             this.canvas.gameObject.SetActive(true);
         }
     }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Game
 {
@@ -6,8 +7,13 @@ namespace Game
     /// Behaviour script for life raft.
     /// </summary>
     [RequireComponent(typeof(Rigidbody))]
-    public class LifeRaft : MonoBehaviour
+    public class LifeRaft : MonoBehaviour, IInteractable
     {
+        /// <summary>
+        /// Cached reference to the <see cref="T:Game.Character"/> instance.
+        /// </summary>
+        private Character character;
+
         /// <summary>
         /// The direction and speed of the raft.
         /// </summary>
@@ -39,7 +45,14 @@ namespace Game
         /// </summary>
         private void CacheComponents()
         {
-            this.rigidbody = this.GetComponent<Rigidbody>();
+            this.rigidbody = this
+                .GetComponent<Rigidbody>()
+                .DisableIfNull(this, "rigidbody")
+                ;
+            this.character = GameObject
+                .FindObjectOfType<Character>()
+                .DisableIfNull(this, "character")
+                ;
         }
 
         /// <summary>
@@ -48,6 +61,38 @@ namespace Game
         private void Move()
         {
             this.rigidbody.AddForceAtPosition(this.velocity, this.transform.position - this.velocity, ForceMode.Impulse);
+        }
+
+        /// <summary>
+        /// Returns an array of information about interactions possible with the object.
+        /// </summary>
+        /// <returns>
+        /// Array of interaction information.
+        /// </returns>
+        public InteractionInfo[] GetInteractions()
+        {
+            return new[]
+            {
+                new InteractionInfo("Board", this.Board),
+            };
+        }
+
+        /// <summary>
+        /// Interaction to swim to the life raft and board it.
+        /// </summary>
+        /// <returns>
+        /// Array of interaction information.
+        /// </returns>
+        private IEnumerator Board()
+        {
+            // swim to the raft, by passing reference character will make sure to update the target position
+            foreach (var x in this.character.SwimTo(this.transform))
+            {
+                yield return x;
+            }
+
+            // board animation
+            //this.character.Board(this.transform);
         }
     }
 }

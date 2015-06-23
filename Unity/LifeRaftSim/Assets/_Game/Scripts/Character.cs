@@ -11,7 +11,7 @@ namespace Game
     public class Character : MonoBehaviour
     {
         /// <summary>
-        /// The character's animator component.
+        /// Cached reference to the <see cref="T:UnityEngine.Animator"/> instance.
         /// </summary>
         private Animator animator;
 
@@ -21,29 +21,11 @@ namespace Game
         private NavMeshAgent navMeshAgent;
 
         /// <summary>
-        /// The target position.
-        /// </summary>
-        private Vector3 target;
-
-        /// <summary>
-        /// Speed multiplier for when character is crawling.
-        /// </summary>
-        private float forwardCrawlSpeed = 1.0f;
-
-        /// <summary>
         /// Called by Unity.
         /// </summary>
         private void Awake()
         {
             this.CacheComponents();
-        }
-
-        /// <summary>
-        /// Called by Unity.
-        /// </summary>
-        private void Update()
-        {
-            this.Move();
         }
 
         /// <summary>
@@ -62,43 +44,6 @@ namespace Game
         }
 
         /// <summary>
-        /// Positions the character.
-        /// </summary>
-        private void Move()
-        {
-            var currentPosition = this.transform.position;
-            var targetPosition = this.target;
-
-            currentPosition.y
-                = target.y
-                = 0.0f;
-
-            var distance = Vector3.Distance(currentPosition, targetPosition);
-            if (distance < 2.0f)
-            {
-                this.SetIsForwardCrawling(false);
-                return;
-            }
-
-            this.IsInWater(true); // TODO change to raycasting at some point
-            this.SetIsForwardCrawling(true); // TODO change to reflect movement according to surface, in water swimming, on raft crawling?
-
-            this.transform.forward = this.target - this.transform.position;
-            this.transform.position += this.transform.forward * this.forwardCrawlSpeed * Time.deltaTime;
-        }
-
-        /// <summary>
-        /// Assign a new target position.
-        /// </summary>
-        /// <param name="position">
-        /// The new target position.
-        /// </param>
-        public void SetTargetDestination(Vector3 position)
-        {
-            this.target = position;
-        }
-
-        /// <summary>
         /// Makes the character swim to the target destination.
         /// </summary>
         /// <param name="destination">
@@ -112,12 +57,65 @@ namespace Game
             this.SetIsForwardCrawling(true);
             this.navMeshAgent.SetDestination(destination);
 
-            while (this.navMeshAgent.pathStatus != NavMeshPathStatus.PathComplete)
+            while (this.navMeshAgent.IsNavigating())
             {
-                this.SetIsForwardCrawling(false);
                 yield return null;
             }
 
+            this.SetIsForwardCrawling(false);
+            yield return null;
+        }
+
+        /// <summary>
+        /// Makes the character swim to the target <see cref="T:UnityEngine.Transform"/>.
+        /// </summary>
+        /// <param name="targetTransform">
+        /// The target destination to swim to.
+        /// </param>
+        /// <returns>
+        /// An enumerator to iterate over the process of swimming to a target.
+        /// </returns>
+        public IEnumerable SwimTo(Transform targetTransform)
+        {
+            this.SetIsForwardCrawling(true);
+
+            var nextPathReplan = 0.0f;
+
+            var targetRigidbody = targetTransform.GetComponent<Rigidbody>();
+            var absolutePoint = targetRigidbody.ClosestPointOnBounds(this.transform.position);
+            var relativePoint = absolutePoint - targetTransform.position;
+            var minimumDistance = Mathf.Abs(relativePoint.magnitude);
+
+            do
+            {
+                if (nextPathReplan < Time.time)
+                {
+                    var targetPosition = targetTransform.position;
+                    var direction = targetPosition - this.transform.position;
+                    direction.Normalize();
+
+                    var distance = Vector3.Distance(this.transform.position, targetPosition);
+                    if (distance <= minimumDistance)
+                    {
+                        this.navMeshAgent.ResetPath();
+                        break;
+                    }
+
+                    var success = this.navMeshAgent.SetDestination(targetPosition - direction);
+                    if (!success)
+                    {
+                        Debug.LogWarning("path not found");
+                        break;
+                    }
+
+                    nextPathReplan = Time.time + 2.0f;
+                }
+
+                yield return null;
+            }
+            while (this.navMeshAgent.IsNavigating());
+
+            this.SetIsForwardCrawling(false);
             yield return null;
         }
 

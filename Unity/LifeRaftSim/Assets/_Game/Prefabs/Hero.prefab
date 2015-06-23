@@ -86,6 +86,7 @@ GameObject:
   - 95: {fileID: 9563990}
   - 114: {fileID: 11455624}
   - 114: {fileID: 11495744}
+  - 195: {fileID: 19588722}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Player
@@ -1922,7 +1923,12 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some transforms are animated by both a Humanoid
+    animation clip and a Generic animation clip. Only the Humanoid clip will be applied
+    on those transforms.\n\tTransform 'Neck'\n\tTransform 'RightLeg'\n\tTransform
+    'LeftLeg'\n\tTransform 'RightArm'\n\tTransform 'LeftFoot'\n\tTransform 'LeftHand'\n\tTransform
+    'LeftUpLeg'\n\tTransform 'RightUpLeg'\n\tTransform 'RightForeArm'\n\tTransform
+    'Spine'\n\tand more ...\n\tFrom animation clip 'Scientist@TreadWater'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11455624
@@ -2089,6 +2095,26 @@ SkinnedMeshRenderer:
     m_Center: {x: .00032377243, y: -.145449698, z: -.034888193}
     m_Extent: {x: .714244425, y: .94491142, z: .229645148}
   m_DirtyAABB: 0
+--- !u!195 &19588722
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108360}
+  m_Enabled: 1
+  m_Radius: .5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.79999995
+  m_BaseOffset: 0
+  m_WalkableMask: 5
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

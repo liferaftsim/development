@@ -87,6 +87,7 @@ GameObject:
   - 114: {fileID: 11455624}
   - 114: {fileID: 11495744}
   - 195: {fileID: 19588722}
+  - 54: {fileID: 5440662}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Player
@@ -1909,6 +1910,21 @@ Transform:
   - {fileID: 451860}
   m_Father: {fileID: 463692}
   m_RootOrder: 1
+--- !u!54 &5440662
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108360}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 1
 --- !u!95 &9563990
 Animator:
   serializedVersion: 3
@@ -1921,7 +1937,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 6858dde737daf764a84884d5f54cff91, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: "\nBinding warning: Some transforms are animated by both a Humanoid
     animation clip and a Generic animation clip. Only the Humanoid clip will be applied

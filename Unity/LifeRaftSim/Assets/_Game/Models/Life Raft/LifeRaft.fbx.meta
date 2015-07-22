@@ -15,6 +15,46 @@ ModelImporter:
     100014: LifeRaft:Bottom
     100016: LifeRaft:LowerTube
     100018: LifeRaft:UpperTube
+    100020: Floor_Bottom
+    100022: Empty_Mesh_1
+    100024: Empty_Mesh_2
+    100026: Empty_Mesh_3
+    100028: Empty_Mesh_4
+    100030: Empty_Mesh_5
+    100032: Empty_Mesh_6
+    100034: LowerTube_1_1
+    100036: LowerTube_2_1
+    100038: LowerTube_3_1
+    100040: LowerTube_4_1
+    100042: LowerTube_5_1
+    100044: LowerTube_6_1
+    100046: LowerTube_7_1
+    100048: LowerTube_8_1
+    100050: UpperTube_1_1
+    100052: UpperTube_2_1
+    100054: UpperTube_3_1
+    100056: UpperTube_4_1
+    100058: UpperTube_5_1
+    100060: UpperTube_6_1
+    100062: UpperTube_7_1
+    100064: UpperTube_8_1
+    100066: LifeRaft:Floor_Bottom
+    100068: LifeRaft:LowerTube_1
+    100070: LifeRaft:LowerTube_2
+    100072: LifeRaft:LowerTube_3
+    100074: LifeRaft:LowerTube_4
+    100076: LifeRaft:LowerTube_5
+    100078: LifeRaft:LowerTube_6
+    100080: LifeRaft:LowerTube_7
+    100082: LifeRaft:LowerTube_8
+    100084: LifeRaft:UpperTube_1
+    100086: LifeRaft:UpperTube_2
+    100088: LifeRaft:UpperTube_3
+    100090: LifeRaft:UpperTube_4
+    100092: LifeRaft:UpperTube_5
+    100094: LifeRaft:UpperTube_6
+    100096: LifeRaft:UpperTube_7
+    100098: LifeRaft:UpperTube_8
     400000: //RootNode
     400002: Body
     400004: Empty_Mesh
@@ -25,6 +65,46 @@ ModelImporter:
     400014: LifeRaft:Bottom
     400016: LifeRaft:LowerTube
     400018: LifeRaft:UpperTube
+    400020: Floor_Bottom
+    400022: Empty_Mesh_1
+    400024: Empty_Mesh_2
+    400026: Empty_Mesh_3
+    400028: Empty_Mesh_4
+    400030: Empty_Mesh_5
+    400032: Empty_Mesh_6
+    400034: LowerTube_1_1
+    400036: LowerTube_2_1
+    400038: LowerTube_3_1
+    400040: LowerTube_4_1
+    400042: LowerTube_5_1
+    400044: LowerTube_6_1
+    400046: LowerTube_7_1
+    400048: LowerTube_8_1
+    400050: UpperTube_1_1
+    400052: UpperTube_2_1
+    400054: UpperTube_3_1
+    400056: UpperTube_4_1
+    400058: UpperTube_5_1
+    400060: UpperTube_6_1
+    400062: UpperTube_7_1
+    400064: UpperTube_8_1
+    400066: LifeRaft:Floor_Bottom
+    400068: LifeRaft:LowerTube_1
+    400070: LifeRaft:LowerTube_2
+    400072: LifeRaft:LowerTube_3
+    400074: LifeRaft:LowerTube_4
+    400076: LifeRaft:LowerTube_5
+    400078: LifeRaft:LowerTube_6
+    400080: LifeRaft:LowerTube_7
+    400082: LifeRaft:LowerTube_8
+    400084: LifeRaft:UpperTube_1
+    400086: LifeRaft:UpperTube_2
+    400088: LifeRaft:UpperTube_3
+    400090: LifeRaft:UpperTube_4
+    400092: LifeRaft:UpperTube_5
+    400094: LifeRaft:UpperTube_6
+    400096: LifeRaft:UpperTube_7
+    400098: LifeRaft:UpperTube_8
     2300000: //RootNode
     2300002: Body
     2300004: Empty_Mesh
@@ -35,6 +115,46 @@ ModelImporter:
     2300014: LifeRaft:Bottom
     2300016: LifeRaft:LowerTube
     2300018: LifeRaft:UpperTube
+    2300020: Floor_Bottom
+    2300022: Empty_Mesh_1
+    2300024: Empty_Mesh_2
+    2300026: Empty_Mesh_3
+    2300028: Empty_Mesh_4
+    2300030: Empty_Mesh_5
+    2300032: Empty_Mesh_6
+    2300034: LowerTube_1_1
+    2300036: LowerTube_2_1
+    2300038: LowerTube_3_1
+    2300040: LowerTube_4_1
+    2300042: LowerTube_5_1
+    2300044: LowerTube_6_1
+    2300046: LowerTube_7_1
+    2300048: LowerTube_8_1
+    2300050: UpperTube_1_1
+    2300052: UpperTube_2_1
+    2300054: UpperTube_3_1
+    2300056: UpperTube_4_1
+    2300058: UpperTube_5_1
+    2300060: UpperTube_6_1
+    2300062: UpperTube_7_1
+    2300064: UpperTube_8_1
+    2300066: LifeRaft:Floor_Bottom
+    2300068: LifeRaft:LowerTube_1
+    2300070: LifeRaft:LowerTube_2
+    2300072: LifeRaft:LowerTube_3
+    2300074: LifeRaft:LowerTube_4
+    2300076: LifeRaft:LowerTube_5
+    2300078: LifeRaft:LowerTube_6
+    2300080: LifeRaft:LowerTube_7
+    2300082: LifeRaft:LowerTube_8
+    2300084: LifeRaft:UpperTube_1
+    2300086: LifeRaft:UpperTube_2
+    2300088: LifeRaft:UpperTube_3
+    2300090: LifeRaft:UpperTube_4
+    2300092: LifeRaft:UpperTube_5
+    2300094: LifeRaft:UpperTube_6
+    2300096: LifeRaft:UpperTube_7
+    2300098: LifeRaft:UpperTube_8
     3300000: //RootNode
     3300002: Body
     3300004: Empty_Mesh
@@ -45,6 +165,46 @@ ModelImporter:
     3300014: LifeRaft:Bottom
     3300016: LifeRaft:LowerTube
     3300018: LifeRaft:UpperTube
+    3300020: Floor_Bottom
+    3300022: Empty_Mesh_1
+    3300024: Empty_Mesh_2
+    3300026: Empty_Mesh_3
+    3300028: Empty_Mesh_4
+    3300030: Empty_Mesh_5
+    3300032: Empty_Mesh_6
+    3300034: LowerTube_1_1
+    3300036: LowerTube_2_1
+    3300038: LowerTube_3_1
+    3300040: LowerTube_4_1
+    3300042: LowerTube_5_1
+    3300044: LowerTube_6_1
+    3300046: LowerTube_7_1
+    3300048: LowerTube_8_1
+    3300050: UpperTube_1_1
+    3300052: UpperTube_2_1
+    3300054: UpperTube_3_1
+    3300056: UpperTube_4_1
+    3300058: UpperTube_5_1
+    3300060: UpperTube_6_1
+    3300062: UpperTube_7_1
+    3300064: UpperTube_8_1
+    3300066: LifeRaft:Floor_Bottom
+    3300068: LifeRaft:LowerTube_1
+    3300070: LifeRaft:LowerTube_2
+    3300072: LifeRaft:LowerTube_3
+    3300074: LifeRaft:LowerTube_4
+    3300076: LifeRaft:LowerTube_5
+    3300078: LifeRaft:LowerTube_6
+    3300080: LifeRaft:LowerTube_7
+    3300082: LifeRaft:LowerTube_8
+    3300084: LifeRaft:UpperTube_1
+    3300086: LifeRaft:UpperTube_2
+    3300088: LifeRaft:UpperTube_3
+    3300090: LifeRaft:UpperTube_4
+    3300092: LifeRaft:UpperTube_5
+    3300094: LifeRaft:UpperTube_6
+    3300096: LifeRaft:UpperTube_7
+    3300098: LifeRaft:UpperTube_8
     4300000: Body
     4300002: Empty_Mesh
     4300004: LifeRaft
@@ -56,6 +216,46 @@ ModelImporter:
     4300016: LifeRaft:UpperTube
     4300018: LifeRaft:LowerTube
     4300020: LifeRaft:Bottom
+    4300022: Floor_Bottom
+    4300024: Empty_Mesh_1
+    4300026: Empty_Mesh_2
+    4300028: Empty_Mesh_3
+    4300030: Empty_Mesh_4
+    4300032: Empty_Mesh_5
+    4300034: Empty_Mesh_6
+    4300036: UpperTube_1_1
+    4300038: UpperTube_2_1
+    4300040: UpperTube_3_1
+    4300042: LowerTube_1_1
+    4300044: UpperTube_4_1
+    4300046: UpperTube_5_1
+    4300048: UpperTube_6_1
+    4300050: UpperTube_7_1
+    4300052: UpperTube_8_1
+    4300054: LowerTube_2_1
+    4300056: LowerTube_3_1
+    4300058: LowerTube_4_1
+    4300060: LowerTube_5_1
+    4300062: LowerTube_6_1
+    4300064: LowerTube_7_1
+    4300066: LowerTube_8_1
+    4300068: LifeRaft:Floor_Bottom
+    4300070: LifeRaft:UpperTube_1
+    4300072: LifeRaft:UpperTube_2
+    4300074: LifeRaft:UpperTube_3
+    4300076: LifeRaft:UpperTube_4
+    4300078: LifeRaft:UpperTube_5
+    4300080: LifeRaft:UpperTube_6
+    4300082: LifeRaft:UpperTube_7
+    4300084: LifeRaft:UpperTube_8
+    4300086: LifeRaft:LowerTube_1
+    4300088: LifeRaft:LowerTube_2
+    4300090: LifeRaft:LowerTube_3
+    4300092: LifeRaft:LowerTube_4
+    4300094: LifeRaft:LowerTube_5
+    4300096: LifeRaft:LowerTube_6
+    4300098: LifeRaft:LowerTube_7
+    4300100: LifeRaft:LowerTube_8
     6400000: //RootNode
     6400002: Body
     6400004: Empty_Mesh
@@ -66,10 +266,50 @@ ModelImporter:
     6400014: LifeRaft:Bottom
     6400016: LifeRaft:LowerTube
     6400018: LifeRaft:UpperTube
+    6400020: Floor_Bottom
+    6400022: Empty_Mesh_1
+    6400024: Empty_Mesh_2
+    6400026: Empty_Mesh_3
+    6400028: Empty_Mesh_4
+    6400030: Empty_Mesh_5
+    6400032: Empty_Mesh_6
+    6400034: LowerTube_1_1
+    6400036: LowerTube_2_1
+    6400038: LowerTube_3_1
+    6400040: LowerTube_4_1
+    6400042: LowerTube_5_1
+    6400044: LowerTube_6_1
+    6400046: LowerTube_7_1
+    6400048: LowerTube_8_1
+    6400050: UpperTube_1_1
+    6400052: UpperTube_2_1
+    6400054: UpperTube_3_1
+    6400056: UpperTube_4_1
+    6400058: UpperTube_5_1
+    6400060: UpperTube_6_1
+    6400062: UpperTube_7_1
+    6400064: UpperTube_8_1
+    6400066: LifeRaft:Floor_Bottom
+    6400068: LifeRaft:LowerTube_1
+    6400070: LifeRaft:LowerTube_2
+    6400072: LifeRaft:LowerTube_3
+    6400074: LifeRaft:LowerTube_4
+    6400076: LifeRaft:LowerTube_5
+    6400078: LifeRaft:LowerTube_6
+    6400080: LifeRaft:LowerTube_7
+    6400082: LifeRaft:LowerTube_8
+    6400084: LifeRaft:UpperTube_1
+    6400086: LifeRaft:UpperTube_2
+    6400088: LifeRaft:UpperTube_3
+    6400090: LifeRaft:UpperTube_4
+    6400092: LifeRaft:UpperTube_5
+    6400094: LifeRaft:UpperTube_6
+    6400096: LifeRaft:UpperTube_7
+    6400098: LifeRaft:UpperTube_8
     9500000: //RootNode
   materials:
     importMaterials: 1
-    materialName: 2
+    materialName: 1
     materialSearch: 1
   animations:
     legacyGenerateAnimations: 4

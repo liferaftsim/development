@@ -14,11 +14,6 @@ namespace Game
         private Character character;
 
         /// <summary>
-        /// The direction and speed of the raft.
-        /// </summary>
-        public Vector3 velocity;
-
-        /// <summary>
         /// Called by Unity.
         /// </summary>
         private void Start()

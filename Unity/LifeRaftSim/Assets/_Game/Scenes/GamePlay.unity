@@ -434,6 +434,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 2307146, guid: 62c2a8adbee394e46b0a69ddb33879d3, type: 2}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 472890, guid: 62c2a8adbee394e46b0a69ddb33879d3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 158884, guid: 62c2a8adbee394e46b0a69ddb33879d3, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

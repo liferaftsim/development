@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using UnityContrib.UnityEngine;
 using UnityEngine;
 
 namespace Game
@@ -46,22 +47,9 @@ namespace Game
             };
         }
 
-        /// <summary>
-        /// Interaction to swim to the life raft and board it.
-        /// </summary>
-        /// <returns>
-        /// Array of interaction information.
-        /// </returns>
         private IEnumerator Board()
         {
-            // swim to the raft, by passing reference character will make sure to update the target position
-            foreach (var x in this.character.SwimTo(this.transform))
-            {
-                yield return x;
-            }
-
-            // board animation
-            //this.character.Board(this.transform);
+            return this.character.Board(this.transform);
         }
     }
 }

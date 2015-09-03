@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using System.Linq;
+using UnityContrib.UnityEngine;
 using UnityEngine;
 
 namespace Game
@@ -13,12 +15,23 @@ namespace Game
         /// <summary>
         /// Cached reference to the <see cref="T:UnityEngine.Animator"/> instance.
         /// </summary>
-        private Animator animator;
+        private HumanAnimationController animationController;
 
         /// <summary>
         /// Cached reference to the <see cref="T:UnityEngine.NavMeshAgent"/> instance.
         /// </summary>
         private NavMeshAgent navMeshAgent;
+
+        /// <summary>
+        /// Cached reference to the <see cref="T:UnityEngine.Rigidbody"/> instance.
+        /// </summary>
+        private new Rigidbody rigidbody;
+
+        /// <summary>
+        /// The amount moved before recalculating path.
+        /// </summary>
+        [SerializeField]
+        private float recalculatePathMovementTreshold = 1.0f;
 
         /// <summary>
         /// Called by Unity.
@@ -33,14 +46,30 @@ namespace Game
         /// </summary>
         private void CacheComponents()
         {
-            this.animator = this
-                .GetComponent<Animator>()
+            this.animationController = this
+                .GetComponent<HumanAnimationController>()
                 .DisableIfNull(this, "animator")
                 ;
             this.navMeshAgent = this
                 .GetComponent<NavMeshAgent>()
                 .DisableIfNull(this, "navMeshAgent")
                 ;
+            this.rigidbody = this
+                .GetComponent<Rigidbody>()
+                .DisableIfNull(this, "rigidbody")
+                ;
+        }
+
+        private void Update()
+        {
+            //var isInwater = this.transform.IsInWater();
+            //this.navMeshAgent.enabled = isInwater;
+            //this.rigidbody.useGravity = !isInwater;
+            //this.rigidbody.constraints
+            //    = isInwater
+            //    ? RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY
+            //    : RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ
+            //    ;
         }
 
         /// <summary>
@@ -54,7 +83,8 @@ namespace Game
         /// </returns>
         public IEnumerable SwimTo(Vector3 destination)
         {
-            this.SetIsForwardCrawling(true);
+            this.animationController.SetIsForwardCrawling(true);
+            this.navMeshAgent.ResetPath();
             this.navMeshAgent.SetDestination(destination);
 
             while (this.navMeshAgent.IsNavigating())
@@ -62,7 +92,7 @@ namespace Game
                 yield return null;
             }
 
-            this.SetIsForwardCrawling(false);
+            this.animationController.SetIsForwardCrawling(false);
             yield return null;
         }
 
@@ -77,68 +107,108 @@ namespace Game
         /// </returns>
         public IEnumerable SwimTo(Transform targetTransform)
         {
-            this.SetIsForwardCrawling(true);
-
-            var nextPathReplan = 0.0f;
+            this.animationController.SetIsForwardCrawling(true);
 
             var targetRigidbody = targetTransform.GetComponent<Rigidbody>();
             var absolutePoint = targetRigidbody.ClosestPointOnBounds(this.transform.position);
             var relativePoint = absolutePoint - targetTransform.position;
             var minimumDistance = Mathf.Abs(relativePoint.magnitude);
+            var startPosition = this.transform.position;
 
             do
             {
-                if (nextPathReplan < Time.time)
+                var distance = Vector3.Distance(startPosition, targetTransform.position);
+                if (distance <= minimumDistance)
+                {
+                    this.navMeshAgent.ResetPath();
+                    break;
+                }
+                else if (distance > this.recalculatePathMovementTreshold)
                 {
                     var targetPosition = targetTransform.position;
-                    var direction = targetPosition - this.transform.position;
-                    direction.Normalize();
-
-                    var distance = Vector3.Distance(this.transform.position, targetPosition);
-                    if (distance <= minimumDistance)
+                    var origin = this.transform.position;
+                    var direction = targetPosition - origin;
+                    var hits = Physics.RaycastAll(origin, direction);
+                    var hit = hits.FirstOrDefault(h => h.collider.transform.parent.parent == targetTransform);
+                    if(hit.collider == null)
                     {
-                        this.navMeshAgent.ResetPath();
+                        Debug.LogError("Cannot raycast to target.");
                         break;
                     }
 
-                    var success = this.navMeshAgent.SetDestination(targetPosition - direction);
+                    var destination = new Vector3(
+                        hit.point.x - direction.x * 0.1f,
+                        hit.point.y,
+                        hit.point.z - direction.z * 0.1f
+                        );
+
+                    this.navMeshAgent.ResetPath();
+                    var success = this.navMeshAgent.SetDestination(destination);
                     if (!success)
                     {
                         Debug.LogWarning("path not found");
                         break;
                     }
-
-                    nextPathReplan = Time.time + 2.0f;
                 }
 
                 yield return null;
             }
             while (this.navMeshAgent.IsNavigating());
 
-            this.SetIsForwardCrawling(false);
+            this.animationController.SetIsForwardCrawling(false);
             yield return null;
         }
 
         /// <summary>
-        /// Sets the "IsForwardCrawling" animation controller property to the specified <paramref name="value"/>.
+        /// Interaction to swim to the life raft and board it.
         /// </summary>
-        /// <param name="value">
-        /// true if forward crawling; otherwise false.
-        /// </param>
-        private void SetIsForwardCrawling(bool value)
+        /// <returns>
+        /// Array of interaction information.
+        /// </returns>
+        public IEnumerator Board(Transform target)
         {
-            this.animator.SetBool("IsForwardCrawling", value);
-        }
+            // swim to the raft, by passing reference character will make sure to update the target position
+            foreach (var x in this.SwimTo(target))
+            {
+                yield return x;
+            }
 
-        /// <summary>
-        /// Sets the "IsInWater" animation controller property to the specified <paramref name="value"/>.
-        /// </summary>
-        /// <param name="value">
-        /// true if is in water; otherwise false.
-        /// </param>
-        private void IsInWater(bool value)
-        {
-            this.animator.SetBool("IsInWater", value);
+            // board animation
+            this.navMeshAgent.enabled = false;
+            this.rigidbody.isKinematic = true;
+
+            this.transform.SetParent(target);
+            var end = Time.time + 2.0f;
+            while (Time.time < end)
+            {
+                yield return null;
+            }
+
+            this.animationController.SetIsInWater(false);
+            this.animationController.SetIsForwardCrawling(false);
+            this.animationController.SetIsSitting(true);
+            yield return null;
+
+            var origin = target.position + Vector3.up * 2.0f;
+            var direction = Vector3.down;
+            var distance = 5.0f;
+            var hits = Physics.RaycastAll(origin, direction, distance);
+            var hit = hits.FirstOrDefault(h => h.collider.transform.parent.parent == target);
+            var y = hit.point.y;
+
+            origin = hit.point;
+            origin.y += 0.1f;
+            direction = this.transform.position - origin;
+            hits = Physics.RaycastAll(origin, direction, distance);
+            hit = hits.FirstOrDefault(h => h.collider.transform.parent.parent == target);
+
+            this.transform.position = new Vector3(
+                hit.point.x - direction.x * 0.15f,
+                y,
+                hit.point.z - direction.z * 0.15f
+                );
+
+            yield return null;
         }
     }
 }

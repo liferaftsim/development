@@ -15,6 +15,15 @@ ModelImporter:
     100014: LifeRaft:Bottom
     100016: LifeRaft:LowerTube
     100018: LifeRaft:UpperTube
+    100020: FloorAndBottom
+    100022: Tube1
+    100024: Tube2
+    100026: Tube3
+    100028: Tube4
+    100030: Tube5
+    100032: Tube6
+    100034: Tube7
+    100036: Tube8
     400000: //RootNode
     400002: Body
     400004: Empty_Mesh
@@ -25,6 +34,15 @@ ModelImporter:
     400014: LifeRaft:Bottom
     400016: LifeRaft:LowerTube
     400018: LifeRaft:UpperTube
+    400020: FloorAndBottom
+    400022: Tube1
+    400024: Tube2
+    400026: Tube3
+    400028: Tube4
+    400030: Tube5
+    400032: Tube6
+    400034: Tube7
+    400036: Tube8
     2300000: //RootNode
     2300002: Body
     2300004: Empty_Mesh
@@ -35,6 +53,15 @@ ModelImporter:
     2300014: LifeRaft:Bottom
     2300016: LifeRaft:LowerTube
     2300018: LifeRaft:UpperTube
+    2300020: FloorAndBottom
+    2300022: Tube1
+    2300024: Tube2
+    2300026: Tube3
+    2300028: Tube4
+    2300030: Tube5
+    2300032: Tube6
+    2300034: Tube7
+    2300036: Tube8
     3300000: //RootNode
     3300002: Body
     3300004: Empty_Mesh
@@ -45,6 +72,15 @@ ModelImporter:
     3300014: LifeRaft:Bottom
     3300016: LifeRaft:LowerTube
     3300018: LifeRaft:UpperTube
+    3300020: FloorAndBottom
+    3300022: Tube1
+    3300024: Tube2
+    3300026: Tube3
+    3300028: Tube4
+    3300030: Tube5
+    3300032: Tube6
+    3300034: Tube7
+    3300036: Tube8
     4300000: Body
     4300002: Empty_Mesh
     4300004: LifeRaft
@@ -56,6 +92,15 @@ ModelImporter:
     4300016: LifeRaft:UpperTube
     4300018: LifeRaft:LowerTube
     4300020: LifeRaft:Bottom
+    4300022: FloorAndBottom
+    4300024: Tube1
+    4300026: Tube2
+    4300028: Tube3
+    4300030: Tube4
+    4300032: Tube5
+    4300034: Tube6
+    4300036: Tube7
+    4300038: Tube8
     6400000: //RootNode
     6400002: Body
     6400004: Empty_Mesh
@@ -66,11 +111,20 @@ ModelImporter:
     6400014: LifeRaft:Bottom
     6400016: LifeRaft:LowerTube
     6400018: LifeRaft:UpperTube
+    6400020: FloorAndBottom
+    6400022: Tube1
+    6400024: Tube2
+    6400026: Tube3
+    6400028: Tube4
+    6400030: Tube5
+    6400032: Tube6
+    6400034: Tube7
+    6400036: Tube8
     9500000: //RootNode
   materials:
     importMaterials: 1
-    materialName: 2
-    materialSearch: 1
+    materialName: 0
+    materialSearch: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0

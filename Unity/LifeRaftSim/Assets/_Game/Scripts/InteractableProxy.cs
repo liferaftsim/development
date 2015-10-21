@@ -1,4 +1,5 @@
-﻿using UnityContrib.UnityEngine;
+﻿using System.Collections.Generic;
+using UnityContrib.UnityEngine;
 using UnityEngine;
 
 namespace Game
@@ -11,9 +12,6 @@ namespace Game
     {
 #pragma warning disable 0649 // disable the "Field XYZ is never assigned to, and will always have its default value XX" compiler warning
 
-        /// <summary>
-        /// 
-        /// </summary>
         [SerializeField]
         private Transform targetInteractableTransform;
 
@@ -23,6 +21,19 @@ namespace Game
         /// Cached reference to the target <see cref="T:Game.IInteractable"/> instance.
         /// </summary>
         private IInteractable targetInteractable;
+
+        public Transform TargetInteractableTransform
+        {
+            get
+            {
+                return targetInteractableTransform;
+            }
+
+            set
+            {
+                this.targetInteractableTransform = value;
+            }
+        }
 
         /// <summary>
         /// Called by Unity.
@@ -44,14 +55,14 @@ namespace Game
         }
 
         /// <summary>
-        /// Returns an array of information about interactions possible with the object.
+        /// Returns information about interactions possible with the object.
         /// </summary>
         /// <returns>
-        /// Array of interaction information.
+        /// Interaction information.
         /// </returns>
-        public InteractionInfo[] GetInteractions()
+        public IEnumerable<InteractionInfo> GetInteractions(Character character, Vector3 clickPoint)
         {
-            return this.targetInteractable.GetInteractions();
+            return this.targetInteractable.GetInteractions(character, clickPoint);
         }
     }
 }

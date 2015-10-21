@@ -3,12 +3,33 @@ using UnityEngine;
 
 namespace Game
 {
+    /// <summary>
+    /// Controller for the AnimationController attached to the humans in the game.
+    /// </summary>
     public class HumanAnimationController : MonoBehaviour
     {
         /// <summary>
         /// Cached reference to the <see cref="T:UnityEngine.Animator"/> instance.
         /// </summary>
         private Animator animator;
+
+        /// <summary>
+        /// Gets or sets the "IsInWater" animation controller property to the specified <paramref name="value"/>.
+        /// </summary>
+        /// <param name="value">
+        /// true if is in water; otherwise false.
+        /// </param>
+        public bool IsInWater
+        {
+            get
+            {
+                return this.animator.GetBool("IsInWater");
+            }
+            set
+            {
+                this.animator.SetBool("IsInWater", value);
+            }
+        }
 
         /// <summary>
         /// Called by Unity.
@@ -39,17 +60,6 @@ namespace Game
         {
             //Debug.Log(Time.time + " SetIsForwardCrawling=" + value);
             this.animator.SetBool("IsForwardCrawling", value);
-        }
-
-        /// <summary>
-        /// Sets the "IsInWater" animation controller property to the specified <paramref name="value"/>.
-        /// </summary>
-        /// <param name="value">
-        /// true if is in water; otherwise false.
-        /// </param>
-        public void SetIsInWater(bool value)
-        {
-            this.animator.SetBool("IsInWater", value);
         }
 
         /// <summary>

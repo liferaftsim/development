@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityContrib.UnityEngine;
 using UnityEngine;
 
@@ -7,49 +9,129 @@ namespace Game
     /// <summary>
     /// Behaviour script for life raft.
     /// </summary>
-    public class LifeRaft : MonoBehaviour, IInteractable
+    public class LifeRaft : Vehicle
     {
         /// <summary>
-        /// Cached reference to the <see cref="T:Game.Character"/> instance.
+        /// 
         /// </summary>
-        private Character character;
-
-        /// <summary>
-        /// Called by Unity.
-        /// </summary>
-        private void Start()
+        private void Awake()
         {
-            this.CacheComponents();
+            this.AddInteractableProxyToDecendants();
+            this.MarkCollidersConvexOnDecendants();
+        }
+
+        private void MarkCollidersConvexOnDecendants()
+        {
+            this.transform.DecendantsDepthFirst().ForEach(d =>
+            {
+                var collider = d.GetComponent<MeshCollider>();
+                if(collider == null)
+                {
+                    return;
+                }
+
+                collider.convex = true;
+            });
+        }
+
+        private void AddInteractableProxyToDecendants()
+        {
+            this.transform.DecendantsDepthFirst().ForEach(d =>
+            {
+                var collider = d.GetComponent<Collider>();
+                if(collider == null)
+                {
+                    return;
+                }
+
+                var proxy = d.gameObject.AddComponent<InteractableProxy>();
+                proxy.TargetInteractableTransform = this.transform;
+            });
         }
 
         /// <summary>
-        /// Caches the components used in this script for quick use later on.
-        /// </summary>
-        private void CacheComponents()
-        {
-            this.character = GameObject
-                .FindObjectOfType<Character>()
-                .DisableIfNull(this, "character")
-                ;
-        }
-
-        /// <summary>
-        /// Returns an array of information about interactions possible with the object.
+        /// Returns information about interactions possible with the object.
         /// </summary>
         /// <returns>
-        /// Array of interaction information.
+        /// Interaction information.
         /// </returns>
-        public InteractionInfo[] GetInteractions()
+        public override IEnumerable<InteractionInfo> GetInteractions(Character character, Vector3 clickPoint)
         {
-            return new[]
-            {
-                new InteractionInfo("Board", this.Board),
-            };
+            yield return new InteractionInfo("Board", () => this.Enter(character, this.Seats.FirstOrDefault(s => s.Character == null)));
         }
 
-        private IEnumerator Board()
+        public override IEnumerator Enter(Character character, Seat seat)
         {
-            return this.character.Board(this.transform);
+            using (new TimelineLog(character.name, "LifeRaft.Interaction.Enter", "Enter"))
+            {
+                Debug.Assert(character != null);
+                Debug.Assert(seat != null);
+
+                var navMeshAgent = character.GetComponent<NavMeshAgent>();
+                var rigidbody = character.GetComponent<Rigidbody>();
+                var animationController = character.GetComponent<HumanAnimationController>();
+
+                // navigate to raft
+                yield return character.Navigate(this.transform);
+
+                character.CurrentVehicle = this;
+
+                // board animation
+                navMeshAgent.enabled = false;
+                rigidbody.isKinematic = true;
+                character.transform.SetParent(this.transform);
+                // TODO replace while loop with boarding animation code
+                var end = Time.time + 2.0f;
+                while (Time.time < end)
+                {
+                    yield return null;
+                }
+
+                animationController.IsInWater = false;
+                animationController.SetIsForwardCrawling(false);
+                animationController.SetIsSitting(true);
+                yield return null;
+
+                // TODO add code crawl to sit animation
+
+                // position in raft
+                character.transform.SetParent(seat.Transform);
+                character.transform.localPosition = Vector3.zero;
+                character.transform.localRotation = Quaternion.identity;
+            }
+        }
+
+        public override IEnumerator Exit(Character character)
+        {
+            using (new TimelineLog(character.name, "LifeRaft.Interaction.Exit", "Exit"))
+            {
+                Debug.Assert(character != null);
+
+                var navMeshAgent = character.GetComponent<NavMeshAgent>();
+                var rigidbody = character.GetComponent<Rigidbody>();
+                var animationController = character.GetComponent<HumanAnimationController>();
+
+                character.transform.SetParent(this.transform);
+
+                // TODO add code crawl to sit animation
+
+                var end = Time.time + 2.0f;
+                while (Time.time < end)
+                {
+                    yield return null;
+                }
+
+                navMeshAgent.enabled = true;
+                rigidbody.isKinematic = false;
+                character.transform.SetParent(null);
+
+                animationController.IsInWater = true;
+                animationController.SetIsForwardCrawling(false);
+                animationController.SetIsSitting(false);
+                yield return null;
+
+                character.CurrentVehicle = null;
+            }
         }
     }
 }

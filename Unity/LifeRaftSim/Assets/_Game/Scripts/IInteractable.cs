@@ -1,4 +1,6 @@
-﻿
+﻿using System.Collections.Generic;
+using UnityEngine;
+
 namespace Game
 {
     /// <summary>
@@ -7,11 +9,11 @@ namespace Game
     public interface IInteractable
     {
         /// <summary>
-        /// Returns an array of information about interactions possible with the object.
+        /// Returns information about interactions possible with the object.
         /// </summary>
         /// <returns>
-        /// Array of interaction information.
+        /// Interaction information.
         /// </returns>
-        InteractionInfo[] GetInteractions();
+        IEnumerable<InteractionInfo> GetInteractions(Character character, Vector3 clickPoint);
     }
 }

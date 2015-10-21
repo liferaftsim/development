@@ -36,6 +36,9 @@ namespace Game
         [SerializeField]
         private RectTransform menuItemPrefab;
 
+        [SerializeField]
+        private BaseSelector characterSelector;
+
 #pragma warning restore 0649 // reenable the "Field XYZ is never assigned to, and will always have its default value XX" compiler warning
 
         /// <summary>
@@ -116,10 +119,12 @@ namespace Game
 
             this.canvas.DestroyAllChildren();
 
-            var interactions = interactable.GetInteractions();
-            for (var index = 0; index < interactions.Length; index++)
+            var interactions = interactable.GetInteractions(this.characterSelector.Selected.GetComponent<Character>(), hit.point);
+            var index = -1;
+            foreach (var interaction in interactions)
             {
-                var interaction = interactions[index];
+                index++;
+
                 var menuItem = GameObject.Instantiate(this.menuItemPrefab, Vector3.zero, Quaternion.identity) as RectTransform;
                 menuItem.SetParent(this.canvas);
                 menuItem.position = Vector3.zero;
@@ -132,7 +137,7 @@ namespace Game
                 button.onClick.AddListener(() =>
                 {
                     this.HideCanvas();
-                    this.StartCoroutine(interaction.Action());
+                    this.StartCoroutine(interaction.Action().Recursive());
                 });
 
                 var text = menuItem.GetComponent<Text>();

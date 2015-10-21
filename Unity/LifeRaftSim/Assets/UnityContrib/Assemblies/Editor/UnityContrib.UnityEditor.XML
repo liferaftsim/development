@@ -1,0 +1,505 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UnityContrib.UnityEditor</name>
+    </assembly>
+    <members>
+        <member name="T:UnityContrib.UnityEditor.BaseEditorWindow">
+            <summary>
+            Base implementation for <see cref="T:UnityEngine.EditorWindow"/>.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.BaseEditorWindow.wasPlaying">
+            <summary>
+            A value indicating whether or not the project was playing in the last update.
+            This is used to monitor if <see cref="P:OnPlayStarted"/> or <see cref="P:OnPlayStopped"/> should be called.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.BaseEditorWindow.lastPosition">
+            <summary>
+            The position and size of the window in the last update call.
+            This is used to monitor if <see cref="P:OnMoved"/> or <see cref="P:OnResized"/> should be called.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.BaseEditorWindow.OnEnable">
+            <summary>
+            Called by Unity when window is enabled.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.BaseEditorWindow.Update">
+            <summary>
+            Called by Unity 100 times a second.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.BaseEditorWindow.OnGUI">
+            <summary>
+            Called by Unity when you should draw the controls of the window.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.BaseEditorWindow.CheckPlayingState">
+            <summary>
+            Calls <see cref="P:OnPlayStarted"/> if playing started and <see cref="P:OnPlayStopped"/> if stopped.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.BaseEditorWindow.CheckBoundaries">
+            <summary>
+            Calls <see cref="P:OnMoved"/> if window moved and <see cref="P:OnResized"/> if resized.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.BaseEditorWindow.OnPlayStarted">
+            <summary>
+            Called when the projected is started.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.BaseEditorWindow.OnPlayStopped">
+            <summary>
+            Called when the project is stopped.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.BaseEditorWindow.OnResized">
+            <summary>
+            Called when the window have resized.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.BaseEditorWindow.OnMoved">
+            <summary>
+            Called when the window have moved.
+            </summary>
+        </member>
+        <member name="T:UnityContrib.UnityEditor.EditorApplicationEx">
+            <summary>
+            Provides a set of helper methods for working with the <see cref="T:UnityEditor.EditorApplication"/> class.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.EditorApplicationEx.editorApplicationType">
+            <summary>
+            The <see cref="T:SystemType"/> of <see cref="T:UnityEditor.EditorApplication"/> class.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.EditorApplicationEx.setSceneRepaintDirtyMethod">
+            <summary>
+            The <see cref="T:System.Reflection.MethodInfo"/> of the <see cref="T:UnityEditor.EditorApplication.SetSceneRepaintDirty"/> method.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.EditorApplicationEx.SetSceneRepaintDirty">
+            <summary>
+            Flags repainting of the scene.
+            </summary>
+        </member>
+        <member name="T:UnityContrib.UnityEditor.EditorGUIEx">
+            <summary>
+            Provides helper methods for working with the <see cref="T:UnityEngine.GUI"/> and <see cref="T:UnityEditor.EditorGUI"/> classes.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.EditorGUIEx.DrawRectangle(UnityEngine.Rect,UnityEngine.Color)">
+            <summary>
+            Draws a rectangle at the spcified <paramref name="rect"/> with the specified <paramref name="color"/>.
+            </summary>
+            <param name="rect">
+            The position and size of the rectangle.
+            </param>
+            <param name="color">
+            The color of the rectangle.
+            </param>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.EditorGUIEx.ChangeCheck(System.Action)">
+            <summary>
+            Check if any control was changed inside a block of code.
+            </summary>
+            <param name="content">
+            The callback to invoke between start and end change check.
+            </param>
+            <returns>
+            true if changed; otherwise false.
+            </returns>
+        </member>
+        <member name="T:UnityContrib.UnityEditor.EditorGUIUtilityEx">
+            <summary>
+            Provides a set of helper methods for working with GUI in the editor.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.EditorGUIUtilityEx.editorGuiUtilityType">
+            <summary>
+            The <see cref="T:SystemType"/> of <see cref="T:UnityEditor.EditorGUIUtility"/> class.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.EditorGUIUtilityEx.textContentMethod">
+            <summary>
+            The <see cref="T:System.Reflection.MethodInfo"/> of the <see cref="T:UnityEditor.EditorGUIUtility.TextContent"/> method.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.EditorGUIUtilityEx.TextContent(System.String)">
+            <summary>
+            Returns the GUIContent from the Unity builtin resources with the specified <paramref name="name"/>.
+            </summary>
+            <param name="name">
+            The name of the builtin resource.
+            </param>
+            <returns>
+            The builtin text resource.
+            </returns>
+        </member>
+        <member name="T:UnityContrib.UnityEditor.MassTreePlacementEditor">
+            <summary>
+            Places random trees on a terrain.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.MassTreePlacementEditor.terrainDataType">
+            <summary>
+            Reference to the <see cref="T:UnityEngine.TerrainData"/> type
+            for later invocation using reflection.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.MassTreePlacementEditor.OnInspectorGUI">
+            <summary>
+            Draws the "Place" and "Clear" buttons.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.MassTreePlacementEditor.Clear(UnityEngine.Terrain)">
+            <summary>
+            Clears the terrain of all trees.
+            </summary>
+            <param name="terrain">
+            The terrain who's trees to remove.
+            </param>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.MassTreePlacementEditor.PlaceRandomTrees(UnityEngine.Terrain,UnityContrib.UnityEngine.MassTreePlacement)">
+            <summary>
+            Places random trees on the terrain.
+            </summary>
+            <param name="terrain">
+            The terrain to place trees on.
+            </param>
+            <param name="mtp">
+            The settings for the tree placement.
+            </param>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.MassTreePlacementEditor.RecalculateTreePositions(UnityEngine.TerrainData)">
+            <summary>
+            Invokes <see cref="M:UnityEngine.TerrainData.RecalculateTreePositions"/> using reflection.
+            </summary>
+            <param name="data">
+            The instance to invoke the method on.
+            </param>
+            <remarks>
+            Some say it is enough to simply call <see cref="M:UnityEngine.Terrain.Flush"/>
+            however I'm not sure what the difference is, so I'm calling this just to be on the safe side.
+            </remarks>
+        </member>
+        <member name="T:UnityContrib.UnityEditor.MultilineWithWordWrapPropertyDrawer">
+            <summary>
+            Property drawer that supports multi line text and the text is word wrapped.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.MultilineWithWordWrapPropertyDrawer.height">
+            <summary>
+            The height of the text area.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.MultilineWithWordWrapPropertyDrawer.style">
+            <summary>
+            The style to use for the text area.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.MultilineWithWordWrapPropertyDrawer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MultilineWithWordWrapPropertyDrawer"/> class.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.MultilineWithWordWrapPropertyDrawer.GetPropertyHeight(UnityEditor.SerializedProperty,UnityEngine.GUIContent)">
+            <summary>
+            The height of the text area.
+            </summary>
+            <param name="property">
+            The SerializedProperty to make the custom GUI for.
+            </param>
+            <param name="label">
+            The label of this property.
+            </param>
+            <returns>
+            The height in pixels. 
+            </returns>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.MultilineWithWordWrapPropertyDrawer.OnGUI(UnityEngine.Rect,UnityEditor.SerializedProperty,UnityEngine.GUIContent)">
+            <summary>
+            Draws the editable property.
+            </summary>
+            <param name="position">
+            Rectangle on the screen to use for the property GUI.
+            </param>
+            <param name="property">
+            The SerializedProperty to make the custom GUI for.
+            </param>
+            <param name="label">
+            The label of this property.
+            </param>
+        </member>
+        <member name="T:UnityContrib.UnityEditor.ShaderUtilEx">
+            <summary>
+            Provides a set of helper methods for working with the <see cref="T:UnityEngine.Shader"/> class.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.ShaderUtilEx.shaderUtilType">
+            <summary>
+            The <see cref="T:SystemType"/> of <see cref="T:UnityEditor.ShaderUtil"/> class.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.ShaderUtilEx.hasTangentChannelMethod">
+            <summary>
+            The <see cref="T:System.Reflection.MethodInfo"/> of the <see cref="T:UnityEditor.ShaderUtil.HasTangentChannel"/> method.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.ShaderUtilEx.HasTangentChannel(UnityEngine.Shader)">
+            <summary>
+            Returns a value indicating if the specified <paramref name="shader"/> has a tangent channel.
+            </summary>
+            <param name="shader">
+            The shader to query.
+            </param>
+            <returns>
+            true if the shader has a tangent channel; otherwise false.
+            </returns>
+        </member>
+        <member name="T:UnityContrib.UnityEditor.TerrainEx">
+            <summary>
+            Provides helper methods for working with the <see cref="T:UnityEngine.Terrain"/> class.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TerrainEx.terrainType">
+            <summary>
+            The <see cref="T:SystemType"/> of <see cref="T:UnityEngine.Terrain"/> class.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TerrainEx.drawTreesAndFoliageField">
+            <summary>
+            The <see cref="T:System.Reflection.FieldInfo"/> of the <see cref="T:UnityEngine.Terrain.drawTreesAndFoliage"/> field.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.TerrainEx.DrawTreesAndFoliage(UnityEngine.Terrain)">
+            <summary>
+            Returns a value indicating if tree and foliage is drawn on the specified <paramref name="terrain"/>.
+            </summary>
+            <param name="terrain">
+            The <see cref="T:UnityEngine.Terrain"/> to query.
+            </param>
+            <returns>
+            true if trees and foliage is drawn; otherwise false.
+            </returns>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.TerrainEx.DrawTreesAndFoliage(UnityEngine.Terrain,System.Boolean)">
+            <summary>
+            Assigns a value indicating if tree and foliage is drawn on the specified <paramref name="terrain"/>.
+            </summary>
+            <param name="terrain">
+            The <see cref="T:UnityEngine.Terrain"/> to change.
+            </param>
+            <param name="value">
+            true if trees and foliage is drawn; otherwise false.
+            </param>
+        </member>
+        <member name="T:UnityContrib.UnityEditor.TimelineLogWindow">
+            <summary>
+            Editor window displaying the timeline.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.skin">
+            <summary>
+            The skin to use for the timeline.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.sourceStyle">
+            <summary>
+            The style to use for the source foldout.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.categoryStyle">
+            <summary>
+            The style to use for the category label.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.entryStyle">
+            <summary>
+            The style to use for the entry label.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.zoomStyle">
+            <summary>
+            The style to use for the zoom label.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.verticalScrollbarStyle">
+            <summary>
+            The style to use for the vertical scrollbar.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.horizontalScrollbarStyle">
+            <summary>
+            The style to use for the horizontal scrollbar.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.headerWidth">
+            <summary>
+            The width of the header column.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.rowHeight">
+            <summary>
+            The height of header rows.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.entryRowHeight">
+            <summary>
+            The height of entry rows.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.minEntryWidth">
+            <summary>
+            The minimum width of an entry.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.timeScale">
+            <summary>
+            The scale of the timeline.
+            Used to control zoom.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.bgColor1">
+            <summary>
+            The background color of even rows.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.bgColor2">
+            <summary>
+            The background color of odd rows.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.verticalScrollPosition">
+            <summary>
+            The position of the handle for the vertical scrollbar.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.horizontalScrollPosition">
+            <summary>
+            The position of the handle for the horizontal scrollbar.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.scrollbarWidth">
+            <summary>
+            The width of the vertical scrollbar.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.scrollbarHeight">
+            <summary>
+            The height of the horizontal scrollbar.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.canvasWidth">
+            <summary>
+            The width of the horizontal scroll view.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.canvasHeight">
+            <summary>
+            The height of the vertical scroll view.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.verticalScrollRect">
+            <summary>
+            The visible boundaries of the vertical scroll view.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.verticalScrollViewRect">
+            <summary>
+            The total bounaries of the vertical scroll view.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.horizontalScrollRect">
+            <summary>
+            The visible boundaries of the horizontal scroll view.
+            </summary>
+        </member>
+        <member name="F:UnityContrib.UnityEditor.TimelineLogWindow.horizontalScrollViewRect">
+            <summary>
+            The total boundaries of the horizontal scroll view.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.TimelineLogWindow.ShowWindow">
+            <summary>
+            Displays the timeline editor window.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.TimelineLogWindow.OnEnable">
+            <summary>
+            Loads skin and caches references to styles.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.TimelineLogWindow.OnPlayStarted">
+            <summary>
+            Repaints the timeline when start playing.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.TimelineLogWindow.OnPlayStopped">
+            <summary>
+            Repaints the timeline when end playing.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.TimelineLogWindow.CalculateLayout">
+            <summary>
+            Calculates sizes and boundaries for the timeline.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.TimelineLogWindow.OnGUI">
+            <summary>
+            Prepares and renders the timeline.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.TimelineLogWindow.AddItemsToMenu(UnityEditor.GenericMenu)">
+            <summary>
+            Adds export feature to timeline menu.
+            </summary>
+            <param name="menu">
+            The menu to add the features to.
+            </param>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.TimelineLogWindow.ExportAsCSV">
+            <summary>
+            Exports the timeline to comma separated values (CSV) plain text file format.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.TimelineLogWindow.UpdateZoom">
+            <summary>
+            Converts mouse input to zoom level.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.TimelineLogWindow.DrawWindow">
+            <summary>
+            Renders the timeline.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.TimelineLogWindow.DrawBackground">
+            <summary>
+            Renders the background of the timeline.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.TimelineLogWindow.DrawNames">
+            <summary>
+            Renders the header column.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.TimelineLogWindow.DrawEntries">
+            <summary>
+            Renders the entries.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.TimelineLogWindow.DrawScrollbars">
+            <summary>
+            Renders the scrollbars.
+            </summary>
+        </member>
+        <member name="M:UnityContrib.UnityEditor.TimelineLogWindow.DrawZoomInfo">
+            <summary>
+            Renders the zoom level.
+            </summary>
+        </member>
+    </members>
+</doc>

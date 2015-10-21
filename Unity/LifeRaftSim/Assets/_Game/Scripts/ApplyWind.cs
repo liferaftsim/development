@@ -20,11 +20,6 @@ namespace Game
         private new Rigidbody rigidbody;
 
         /// <summary>
-        /// Cached reference to the game object's <see cref="T:UnityEngine.Renderer"/> component.
-        /// </summary>
-        private new Renderer renderer;
-
-        /// <summary>
         /// The kind of force applied to the rigidbody.
         /// </summary>
         [SerializeField]

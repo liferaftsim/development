@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityContrib.UnityEngine;
 using UnityEngine;
@@ -103,6 +104,7 @@ namespace Game
                 this.animationController.SetIsForwardCrawling(false);
                 yield return null;
             }
+            Debug.Log("Swim to end");
         }
 
         public IEnumerator Navigate(Transform target)
